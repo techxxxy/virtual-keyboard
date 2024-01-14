@@ -34,37 +34,71 @@
             width: 300px;
             font-size: 16px;
         }
+
+        #languageSwitch {
+            margin-top: 10px;
+            cursor: pointer;
+            padding: 5px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
 
 <div id="keyboard"></div>
 <input type="text" id="textbox" readonly>
+<button id="languageSwitch">한글</button>
 
 <script>
-    const keyboardLayout = [
-        '1234567890ß',
-        'qwertzuiopü',
-        'asdfghjklöä',
-        'yxcvbnm,.-'
-    ];
+    let isKoreanLayout = false;
+
+    const keyboardLayouts = {
+        korean: [
+            'ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ',
+            'ㅁㄴㅇㄹㅎㅗㅓㅏㅣ',
+            'ㅋㅌㅊㅍㅠㅜㅡ',
+            'ㄲㄸㅃㅆㅉ'
+        ],
+        german: [
+            '1234567890ß',
+            'qwertzuiopü',
+            'asdfghjklöä',
+            'yxcvbnm,.-'
+        ]
+    };
 
     const keyboardContainer = document.getElementById('keyboard');
     const textbox = document.getElementById('textbox');
+    const languageSwitchButton = document.getElementById('languageSwitch');
 
-    keyboardLayout.forEach(row => {
-        row.split('').forEach(key => {
-            const keyElement = document.createElement('div');
-            keyElement.classList.add('key');
-            keyElement.textContent = key;
-            keyElement.addEventListener('click', () => appendToTextbox(key));
-            keyboardContainer.appendChild(keyElement);
+    function createKeyboard(layout) {
+        keyboardContainer.innerHTML = '';
+        layout.forEach(row => {
+            row.split('').forEach(key => {
+                const keyElement = document.createElement('div');
+                keyElement.classList.add('key');
+                keyElement.textContent = key;
+                keyElement.addEventListener('click', () => appendToTextbox(key));
+                keyboardContainer.appendChild(keyElement);
+            });
         });
-    });
+    }
 
     function appendToTextbox(character) {
         textbox.value += character;
     }
+
+    languageSwitchButton.addEventListener('click', () => {
+        isKoreanLayout = !isKoreanLayout;
+        languageSwitchButton.textContent = isKoreanLayout ? 'German' : '한글';
+        createKeyboard(isKoreanLayout ? keyboardLayouts.korean : keyboardLayouts.german);
+    });
+
+    // Initial keyboard layout
+    createKeyboard(keyboardLayouts.german);
 </script>
 
 </body>
