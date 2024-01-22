@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Changer</title>
+    <style>
+        #text {
+            transition: color 0.5s; /* Add a smooth transition effect for color changes */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p id="text">바나나</p> <!-- Initial text on the screen -->
+        <input type="text" id="input" placeholder="Type here and press Enter">
+    </div>
+
+    <script>
+        // Add an event listener to the input box for keydown events
+        document.getElementById('input').addEventListener('keydown', function(event) {
+            // Check if the pressed key is Enter
+            if (event.key === 'Enter') {
+                // Get the trimmed value from the input box
+                var inputText = this.value.trim();
+
+                // Check if the input matches '바나나'
+                if (inputText === '바나나') {
+                    // Change the text color to green and clear the text content
+                    document.getElementById('text').style.color = 'green';
+                    document.getElementById('text').innerText = '';
+                } else {
+                    // If the input doesn't match '바나나', change the text color to red
+                    document.getElementById('text').style.color = 'red';
+                }
+
+                // Clear the input box after processing
+                this.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
