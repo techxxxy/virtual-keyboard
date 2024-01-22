@@ -5,37 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color Changer</title>
     <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
         #text {
-            transition: color 0.5s; /* Add a smooth transition effect for color changes */
+            transition: color 0.5s;
+        }
+
+        #inputText {
+            color: blue; /* Color for the displayed input text */
         }
     </style>
 </head>
 <body>
     <div>
-        <p id="text">바나나</p> <!-- Initial text on the screen -->
+        <p id="text">바나나</p>
         <input type="text" id="input" placeholder="Type here and press Enter">
     </div>
 
     <script>
-        // Add an event listener to the input box for keydown events
-        document.getElementById('input').addEventListener('keydown', function(event) {
-            // Check if the pressed key is Enter
-            if (event.key === 'Enter') {
-                // Get the trimmed value from the input box
-                var inputText = this.value.trim();
 
-                // Check if the input matches '바나나'
+        document.getElementById('input').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                var inputText = document.getElementById('input').value.trim();
+                var textElement = document.getElementById('text');
+                console.log(document.getElementById('input'));
+
                 if (inputText === '바나나') {
-                    // Change the text color to green and clear the text content
-                    document.getElementById('text').style.color = 'green';
-                    document.getElementById('text').innerText = '';
+                    textElement.style.color = 'green';
                 } else {
-                    // If the input doesn't match '바나나', change the text color to red
-                    document.getElementById('text').style.color = 'red';
+                    textElement.style.color = 'red';
                 }
 
-                // Clear the input box after processing
-                this.value = '';
+                this.value = ''; // Clear the input box
             }
         });
     </script>
