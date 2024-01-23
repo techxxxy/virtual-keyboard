@@ -1,0 +1,26 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: keyboard, "Arial Rounded", Helvetica, Arial, sans-serif;
+}
+
+input {
+    width: 20vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+#vocaburary {
+    transition: color 0.5s;
+}
+
+
+#practiceInput {
+    color: blue; /* Color for the displayed input text */
+}

@@ -53,52 +53,64 @@
 <button id="languageSwitch">한글</button>
 
 <script>
-    let isKoreanLayout = false;
+// Variable to track the current keyboard layout (Korean or German)
+let isKoreanLayout = false;
 
-    const keyboardLayouts = {
-        korean: [
-            '1234567890-=',
-            'ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ[]',
-            'ㅁㄴㅇㄹㅎㅗㅓㅏㅣ;\'\\',
-            'ㅋㅌㅊㅍㅠㅜㅡ,./'
-        ],
-        german: [
-            '1234567890\'^',
-            'qwertzuiopü¨',
-            'asdfghjklöä$',
-            '<yxcvbnm,.-'
-        ]
-    };
+// Object containing keyboard layouts for Korean and German
+const keyboardLayouts = {
+    korean: [
+        '1234567890-=',
+        'ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ[]',
+        'ㅁㄴㅇㄹㅎㅗㅓㅏㅣ;\'\\',
+        'ㅋㅌㅊㅍㅠㅜㅡ,./'
+    ],
+    german: [
+        '1234567890\'^',
+        'qwertzuiopü¨',
+        'asdfghjklöä$',
+        '<yxcvbnm,.-'
+    ]
+};
 
-    const keyboardContainer = document.getElementById('keyboard');
-    const textbox = document.getElementById('textbox');
-    const languageSwitchButton = document.getElementById('languageSwitch');
+// DOM elements
+const keyboardContainer = document.getElementById('keyboard');
+const textbox = document.getElementById('textbox');
+const languageSwitchButton = document.getElementById('languageSwitch');
 
-    function createKeyboard(layout) {
-        keyboardContainer.innerHTML = '';
-        layout.forEach(row => {
-            row.split('').forEach(key => {
-                const keyElement = document.createElement('div');
-                keyElement.classList.add('key');
-                keyElement.textContent = key;
-                keyElement.addEventListener('click', () => appendToTextbox(key));
-                keyboardContainer.appendChild(keyElement);
-            });
+// Function to create the virtual keyboard based on the layout
+function createKeyboard(layout) {
+    keyboardContainer.innerHTML = '';
+    layout.forEach(row => {
+        row.split('').forEach(key => {
+            // Create a div element for each key in the layout
+            const keyElement = document.createElement('div');
+            keyElement.classList.add('key');
+            keyElement.textContent = key;
+            // Add click event listener to append key to the textbox
+            keyElement.addEventListener('click', () => appendToTextbox(key));
+            // Append the key element to the keyboard container
+            keyboardContainer.appendChild(keyElement);
         });
-    }
-
-    function appendToTextbox(character) {
-        textbox.value += character;
-    }
-
-    languageSwitchButton.addEventListener('click', () => {
-        isKoreanLayout = !isKoreanLayout;
-        languageSwitchButton.textContent = isKoreanLayout ? 'German' : '한글';
-        createKeyboard(isKoreanLayout ? keyboardLayouts.korean : keyboardLayouts.german);
     });
+}
 
-    // Initial keyboard layout
-    createKeyboard(keyboardLayouts.german);
+// Function to append a character to the textbox
+function appendToTextbox(character) {
+    textbox.value += character;
+}
+
+// Event listener for language switch button
+languageSwitchButton.addEventListener('click', () => {
+    // Toggle between Korean and German layouts
+    isKoreanLayout = !isKoreanLayout;
+    // Update button text based on the current layout
+    languageSwitchButton.textContent = isKoreanLayout ? 'German' : '한글';
+    // Create the keyboard based on the selected layout
+    createKeyboard(isKoreanLayout ? keyboardLayouts.korean : keyboardLayouts.german);
+});
+
+// Initial keyboard layout (German)
+createKeyboard(keyboardLayouts.german);
 </script>
 
 </body>
