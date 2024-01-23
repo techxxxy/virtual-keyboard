@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Keyboard</title>
+    <title>index.html Virtual Keyboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -58,17 +58,17 @@ let isKoreanLayout = false;
 
 // Object containing keyboard layouts for Korean and German
 const keyboardLayouts = {
-    korean: [
-        '1234567890-=',
-        'ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ[]',
-        'ㅁㄴㅇㄹㅎㅗㅓㅏㅣ;\'\\',
-        'ㅋㅌㅊㅍㅠㅜㅡ,./'
-    ],
     german: [
         '1234567890\'^',
-        'qwertzuiopü¨',
-        'asdfghjklöä$',
-        '<yxcvbnm,.-'
+        'QWERTZUIOPü¨$',
+        'ASDFGHJKLöä',
+        'YXCVBNM,.-'
+    ],
+    korean: [
+        '1234567890-=',
+        'ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ[]\\',
+        'ㅁㄴㅇㄹㅎㅗㅓㅏㅣ;\'',
+        'ㅋㅌㅊㅍㅠㅜㅡ,./'
     ]
 };
 
@@ -80,8 +80,10 @@ const languageSwitchButton = document.getElementById('languageSwitch');
 // Function to create the virtual keyboard based on the layout
 function createKeyboard(layout) {
     keyboardContainer.innerHTML = '';
+
     layout.forEach(row => {
         row.split('').forEach(key => {
+            
             // Create a div element for each key in the layout
             const keyElement = document.createElement('div');
             keyElement.classList.add('key');
@@ -90,7 +92,9 @@ function createKeyboard(layout) {
             keyElement.addEventListener('click', () => appendToTextbox(key));
             // Append the key element to the keyboard container
             keyboardContainer.appendChild(keyElement);
+            console.log("What is key: ",key);
         });
+        console.log("What ist row: ",row );
     });
 }
 

@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/keyboard.css">
-    <title>한글 타자 연습 - Korean Typing Practice</title>
+    <title>Apple Keyboard with CSS</title>
 </head>
 <body>
-    <div class="container">
-        <p id="vocaburary">바나나</p>
-        <input type="text" id="practiceInput" placeholder="Type here and press Enter">
+     <div class="container">  <!-- without div keys will be overflowed when screen is small-->
         <div class="keyboard">
             <ul class="fn">
                 <li class="esc">esc</li><li>F1</li><li>F2</li><li>F3</li><li>F4</li><li>F5</li><li>F6</li><li>F7</li><li>F8</li><li>F9</li><li>F10</li><li>F11</li><li>F12</li><li class="fnLast last">__</li>
@@ -19,7 +17,7 @@
                 <li class="first">§</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>'</li><li>^</li><li class="backspace last">backspace</li>
             </ul>
             <ul class="qwe printable">
-                <li class="tab">tab</li><li>Q</li><li>W</li><li>E</li><li>R</li><li>T</li><li>Z</li><li>U</li><li>I</li><li>O</li><li>P</li><li>Ü</li><li>¨</li><li class="last">$</li>
+                <li class="tab">tab</li><li>Q</li><li>W</li><li>E</li><li>R</li><li>T</li><li>Z</li><li>U</li><li>I</li><li>O</li><li>P</li><li>Ü</li><li>¨</li><li class="last">&nbsp</li>
             </ul>
             <ul class="asd printable">
                 <li class="capLock">capLock</li><li>A</li><li>S</li><li>D</li><li>F</li><li>G</li><li>H</li><li>J</li><li>K</li><li>L</li><li>ö</li><li>ä</li><li class="enter last">Enter</li>
@@ -28,26 +26,19 @@
                 <li class="cap">cap</li><li>Y</li><li>X</li><li>C</li><li>V</li><li>B</li><li>N</li><li>M</li><li>,</li><li>.</li><li>-</li><li class="rightCap last">CAP</li>
             </ul>
             <ul class="control">
-                <li class="lang">fn</li><li>control</li><li>option</li><li class="command">command</li><li class="spaceBar">df</li><li class="command">command</li><li>option</li><li>left</li><li>updown</li><li class="right last">right</li>
+                <li class="lang">fn</li><li>control</li><li>option</li><li class="command">command<span>⌘</span></li><li class="spaceBar">&nbsp</li><li class="command">command<span>⌘</span></li><li>option</li><li>left</li><li>updown</li><li class="right last">right</li>
             </ul>
         </div>
-</div>
-<script>
-        //when keyup is used instead of keypress, isComposing===false check is required for korean
-        document.getElementById('practiceInput').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                var inputText = document.getElementById('practiceInput').value.trim();
-                var textElement = document.getElementById('vocaburary');
+    </div>
 
-                if (inputText === '바나나') {
-                    textElement.style.color = 'green';
-                } else {
-                    textElement.style.color = 'red';
-                }
+    <script>
+    // Select all li elements without any class under ul with class "printable"
+    const selectedLiElements = document.querySelectorAll('.printable li:not([class])');
 
-                this.value = ''; // Clear the input box
-            }
-        });
+    // Log the number of selected elements to the console
+    console.log('Number of selected li elements:', selectedLiElements.length);
+
     </script>
+
 </body>
 </html>

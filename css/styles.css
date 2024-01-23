@@ -7,13 +7,16 @@ body {
     font-family: keyboard, "Arial Rounded", Helvetica, Arial, sans-serif;
 }
 
-input {
-    width: 20vh;
-}
-
 .container {
     display: flex;
     flex-direction: column;
+}
+
+inputm {
+
+}
+input [type="text"] {
+    width: 20vh;
 }
 
 #vocaburary {

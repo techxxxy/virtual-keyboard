@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Keyboard Layout</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/keyboard.css">
+    <script src="js/keyboard.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        <fieldset>
+            <legend>Select a keyboard layout:</legend>
+            <div>
+                <label>
+                    <input type="radio" name="keyboardLayout" value="german" checked>
+                    Deutsch
+                </label>
+                <label>
+                    <input type="radio" name="keyboardLayout" value="germanCapslock" checked>
+                    Detusch Caps-lock
+                </label>
+                <label>
+                    <input type="radio" name="keyboardLayout" value="korean">
+                    한글
+                </label>
+                <label>
+                    <input type="radio" name="keyboardLayout" value="koreanCapslock">
+                    한글 Caps-lock
+                </label>
+            </div>
+        </fieldset>
+
+        <div class="keyboard">
+            <ul class="fn">
+                <li class="esc">esc</li><li>F1</li><li>F2</li><li>F3</li><li>F4</li><li>F5</li><li>F6</li><li>F7</li><li>F8</li><li>F9</li><li>F10</li><li>F11</li><li>F12</li><li class="fnLast last">__</li>
+            </ul>
+            <ul class="number printable">
+                <li class="first">§</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>'</li><li>^</li><li class="backspace last">backspace</li>
+            </ul>
+            <ul class="qwe printable">
+                <li class="tab">tab</li><li>Q</li><li>W</li><li>E</li><li>R</li><li>T</li><li>Z</li><li>U</li><li>I</li><li>O</li><li>P</li><li>Ü</li><li>¨</li><li class="last">&nbsp</li>
+            </ul>
+            <ul class="asd printable">
+                <li class="capLock">capLock</li><li>A</li><li>S</li><li>D</li><li>F</li><li>G</li><li>H</li><li>J</li><li>K</li><li>L</li><li>ö</li><li>ä</li><li class="enter last">Enter</li>
+            </ul>
+            <ul class="yxc printable">
+                <li class="cap">cap</li><li>Y</li><li>X</li><li>C</li><li>V</li><li>B</li><li>N</li><li>M</li><li>,</li><li>.</li><li>-</li><li class="rightCap last">CAP</li>
+            </ul>
+            <ul class="control">
+                <li class="lang">fn</li><li>control</li><li>option</li><li class="command">command</li><li class="spaceBar">&nbsp</li><li class="command">command</li><li>option</li><li>left</li><li>updown</li><li class="right last">right</li>
+            </ul>
+        </div>
+</div>
+<script>
+/* const selectedLiElements = document.querySelectorAll('.printable li:not([class])');
+console.log('Number of selected li elements(printerble keys):', selectedLiElements.length);
+
+const keyboardLayouts = {
+    german: [
+        '1234567890\'^',
+        'qwertzuiopü¨',
+        'asdfghjklöä',
+        'yxcvbnm,.-'
+    ],
+    germanCapslock: [
+        '+"*ç%&/()=?`',
+        'QWERTZUIOPÜ¨',
+        'ASDFGHJKLÖÄ',
+        'YXCVBNM;:_'
+    ],
+    korean: [
+        '1234567890-=',
+        'ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ[]',
+        'ㅁㄴㅇㄹㅎㅗㅓㅏㅣ;\'',
+        'ㅋㅌㅊㅍㅠㅜㅡ,./'
+    ],
+    koreanCapslock: [
+        '!@#$%^&*()_+',
+        'ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ{}',
+        'ㅁㄴㅇㄹㅎㅗㅓㅏㅣ:\"',
+        'ㅋㅌㅊㅍㅠㅜㅡ<>?'
+    ]
+};;
+
+// Event listener for radio buttons
+document.querySelectorAll('input[name="keyboardLayout"]').forEach((radio) => {
+    radio.addEventListener('change', (event) => {
+        let selectedLayout = event.target.value;
+
+        // Check if the selected layout exists in keyboardLayouts
+         if (keyboardLayouts[selectedLayout]) {
+            changeKeyboard(keyboardLayouts[selectedLayout]);
+         }
+    });
+});
+
+
+function changeKeyboard(layout) {
+    //const ulList = document.querySelectorAll('.printable li:not([class])');
+    var index = 0;
+    layout.forEach(row => {
+        row.split('').forEach(key => {
+            console.log('index of selected lan:', index);
+            selectedLiElements[index].textContent = key;
+            index++;
+        });
+        console.log("What ist row: ",row );
+    });
+} */
+
+</script>
+
+</body>
+</html>
