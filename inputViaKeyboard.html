@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Keyboard Layout</title>
+    <title>Input via Keyboard</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/keyboard.css">
-    <script src="js/keyboard.js" type="text/javascript"></script>
+    <script src="js/inputCompositLetter.js" defer></script>
+    <script src="js/hangul.js" defer></script>
+<!--    <script src="https://unpkg.com/hangul-js" type="text/javascript" defer></script> -->
 </head>
+
 <body>
     <div class="container">
+        <h3>Inputed text from the real or virtual Keyboard</h2>
+        <input type="text" id="textbox" autofocus>
+        <h3>Intended Text</h2>
+        <p id="textDisplay">test</p>
         <fieldset>
             <legend>Select a keyboard layout:</legend>
             <div>
@@ -33,7 +40,7 @@
         </fieldset>
 
         <div class="keyboard">
-            <ul class="fn">
+            <ul class="fn" id="list1">
                 <li class="esc">esc</li><li>F1</li><li>F2</li><li>F3</li><li>F4</li><li>F5</li><li>F6</li><li>F7</li><li>F8</li><li>F9</li><li>F10</li><li>F11</li><li>F12</li><li class="fnLast last">__</li>
             </ul>
             <ul class="number printable">
@@ -46,13 +53,12 @@
                 <li class="capLock">capLock</li><li>A</li><li>S</li><li>D</li><li>F</li><li>G</li><li>H</li><li>J</li><li>K</li><li>L</li><li>ö</li><li>ä</li><li class="enter last">Enter</li>
             </ul>
             <ul class="yxc printable">
-                <li class="cap">cap</li><li>Y</li><li>X</li><li>C</li><li>V</li><li>B</li><li>N</li><li>M</li><li>,</li><li>.</li><li>-</li><li class="rightCap last">CAP</li>
+                <li class="shift">Shift</li><li>Y</li><li>X</li><li>C</li><li>V</li><li>B</li><li>N</li><li>M</li><li>,</li><li>.</li><li>-</li><li class="rightShift last">Shift</li>
             </ul>
             <ul class="control">
                 <li class="lang">fn</li><li>control</li><li>option</li><li class="command">command</li><li class="spaceBar">&nbsp</li><li class="command">command</li><li>option</li><li>left</li><li>updown</li><li class="right last">right</li>
             </ul>
         </div>
 </div>
-
 </body>
 </html>

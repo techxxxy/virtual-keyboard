@@ -1,7 +1,5 @@
 let selectedLiElements; // Declare selectedLiElements globally
 
-console.log('Script loaded successfully start');
-
 window.onload = function(){
     selectedLiElements = document.querySelectorAll('.printable li:not([class])');
     console.log('Number of selected li elements(printerble keys):', selectedLiElements.length);
@@ -62,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
 });
 
 console.log('Script loaded successfully end');

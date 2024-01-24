@@ -80,6 +80,15 @@ li {
 		0 2px 3px #333;
 
 }
+
+ul.overlay li {
+    background: #ffffff00;
+    box-shadow: none;
+    border: solid 1px rgba(255, 255, 255, 0);
+    
+}
+
+
 /* printable key has a  */
 ul.printable li:not([class]) {
     background: radial-gradient(at 40% 1%, rgb(224, 224, 224) 5%, #ffffff 70%);
@@ -134,10 +143,10 @@ ul.number, .qwe, .asd, .yxc, .control{
     width: 3.05cm;
 }
 
-.cap{
+.shift{
     width: 4.05cm;
 }
-.rightCap{
+.rightShift{
     width: 4cm;
 }
 .lang{

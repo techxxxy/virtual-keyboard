@@ -6,14 +6,25 @@
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/keyboard.css">
     <title>Apple Keyboard with CSS</title>
+    <style>
+        div.keyboard { position: relative; }
+        #sdiv1{	position: absolute; width: 5cm; height: 5cm; background-color: rgba(0, 255, 255, 0.669); pointer-events: none;}
+        #sdiv2 { position: absolute; top: 50px; left: 50px; width: 5cm; height: 5cm; background-color: rgba(255, 234, 0, 0.355); pointer-events: visible;}
+        .overlay { position: absolute; top: 15px; background-color: rgba(255, 128, 74, 0.081); pointer-events: none;}
+</style>
 </head>
 <body>
      <div class="container">  <!-- without div keys will be overflowed when screen is small-->
         <div class="keyboard">
+            <div id='sdiv1' style="border: 1px solid #000;">div1</div>
+            <div id='sdiv2' style="border: 1px solid #000;">div2</div>
+            <ul class='overlay'>
+                <li class="esc">esc</li><li>F1</li><li>F2</li><li>F3</li><li>F4</li><li>F5</li><li>F6</li><li>F7</li><li>F8</li><li>F9</li><li>F10</li><li>F11</li><li>F12</li><li class="fnLast last">__</li>
+            </ul>
             <ul class="fn">
                 <li class="esc">esc</li><li>F1</li><li>F2</li><li>F3</li><li>F4</li><li>F5</li><li>F6</li><li>F7</li><li>F8</li><li>F9</li><li>F10</li><li>F11</li><li>F12</li><li class="fnLast last">__</li>
             </ul>
-            <ul class="number printable">
+            <ul class="number printable"> <!-- printable li are used in javascript-->
                 <li class="first">§</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>'</li><li>^</li><li class="backspace last">backspace</li>
             </ul>
             <ul class="qwe printable">
