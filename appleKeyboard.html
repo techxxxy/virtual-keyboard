@@ -1,55 +1,83 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/keyboard.css">
+    <link rel="stylesheet" href="./css/koreanKeyboard.css">
     <title>Apple Keyboard with CSS</title>
+
     <style>
-        div.keyboard { position: relative; }
-        #sdiv1{	position: absolute; width: 5cm; height: 5cm; background-color: rgba(0, 255, 255, 0.669); pointer-events: none;}
-        #sdiv2 { position: absolute; top: 50px; left: 50px; width: 5cm; height: 5cm; background-color: rgba(255, 234, 0, 0.355); pointer-events: visible;}
-        .overlay { position: absolute; top: 15px; background-color: rgba(255, 128, 74, 0.081); pointer-events: none;}
-</style>
+        div.keyboard {
+            position: relative;
+        }
+
+        #sdiv1 {
+            position: absolute;
+            width: 5cm;
+            height: 5cm;
+            background-color: rgba(0, 255, 255, 0.669);
+            pointer-events: none;
+            width: 28.4cm;
+            height: 11.6cm;
+            z-index: 3;
+        }
+
+        img {
+            opacity: 0.6;
+        }
+
+        #sdiv2 {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 5cm;
+            height: 5cm;
+            background-color: rgba(255, 234, 0, 0.355);
+            pointer-events: visible;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 15px;
+            background-color: rgba(255, 128, 74, 0.081);
+            pointer-events: none;
+        }
+    </style>
 </head>
+
 <body>
-     <div class="container">  <!-- without div keys will be overflowed when screen is small-->
+
+    <div class="container"> <!-- without div keys will be overflowed when screen is small-->
         <div class="keyboard">
-            <div id='sdiv1' style="border: 1px solid #000;">div1</div>
+             <img id="sdiv1" src="./img/apple-ko-27_9-11_49.png">
+            <!--<div id='sdiv1' style="border: 1px solid #000;">div1</div>
             <div id='sdiv2' style="border: 1px solid #000;">div2</div>
             <ul class='overlay'>
                 <li class="esc">esc</li><li>F1</li><li>F2</li><li>F3</li><li>F4</li><li>F5</li><li>F6</li><li>F7</li><li>F8</li><li>F9</li><li>F10</li><li>F11</li><li>F12</li><li class="fnLast last">__</li>
-            </ul>
-            <ul class="fn">
+            </ul> -->
+            <ul class="fn" id="list1">
                 <li class="esc">esc</li><li>F1</li><li>F2</li><li>F3</li><li>F4</li><li>F5</li><li>F6</li><li>F7</li><li>F8</li><li>F9</li><li>F10</li><li>F11</li><li>F12</li><li class="fnLast last">__</li>
             </ul>
-            <ul class="number printable"> <!-- printable li are used in javascript-->
-                <li class="first">§</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>'</li><li>^</li><li class="backspace last">backspace</li>
+            <ul class="number printable">
+                <li class="first">§</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>'</li><li>^</li><li id="backButton" class="backspace last">backspace</li>
             </ul>
             <ul class="qwe printable">
-                <li class="tab">tab</li><li>Q</li><li>W</li><li>E</li><li>R</li><li>T</li><li>Z</li><li>U</li><li>I</li><li>O</li><li>P</li><li>Ü</li><li>¨</li><li class="last">&nbsp</li>
+                <li class="tab">↹ tab</li><li>Q</li><li>W</li><li>E</li><li>R</li><li>T</li><li>Z</li><li>U</li><li>I</li><li>O</li><li>P</li><li>Ü</li><li>¨</li><li class="last">&nbsp</li>
             </ul>
             <ul class="asd printable">
-                <li class="capLock">capLock</li><li>A</li><li>S</li><li>D</li><li>F</li><li>G</li><li>H</li><li>J</li><li>K</li><li>L</li><li>ö</li><li>ä</li><li class="enter last">Enter</li>
+                <li class="capLock">⇪ capLock</li><li>A</li><li>S</li><li>D</li><li>F</li><li>G</li><li>H</li><li>J</li><li>K</li><li>L</li><li>ö</li><li>ä</li><li class="enter last">Enter</li>
             </ul>
             <ul class="yxc printable">
-                <li class="cap">cap</li><li>Y</li><li>X</li><li>C</li><li>V</li><li>B</li><li>N</li><li>M</li><li>,</li><li>.</li><li>-</li><li class="rightCap last">CAP</li>
+                <li class="shift">⇧ Shift</li><li>&lt;</li><li>Y</li><li>X</li><li>C</li><li>V</li><li>B</li><li>N</li><li>M</li><li>,</li><li>.</li><li>-</li><li class="rightShift last">Shift ⇧</li>
             </ul>
             <ul class="control">
-                <li class="lang">fn</li><li>control</li><li>option</li><li class="command">command<span>⌘</span></li><li class="spaceBar">&nbsp</li><li class="command">command<span>⌘</span></li><li>option</li><li>left</li><li>updown</li><li class="right last">right</li>
+                <li class="lang">fn</li><li>control	^</li><li>opt ⎇</li><li class="command">command ⌘</li><li class="spaceBar">&nbsp</li><li class="command">⌘ command</li><li>⎇ opt</li><li>←</li><li>updown</li><li class="right last">→</li>
             </ul>
         </div>
     </div>
 
-    <script>
-    // Select all li elements without any class under ul with class "printable"
-    const selectedLiElements = document.querySelectorAll('.printable li:not([class])');
-
-    // Log the number of selected elements to the console
-    console.log('Number of selected li elements:', selectedLiElements.length);
-
-    </script>
-
 </body>
+
 </html>

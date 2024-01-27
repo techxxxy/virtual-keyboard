@@ -9,14 +9,15 @@
     <script src="js/inputCompositLetter.js" defer></script>
     <script src="js/hangul.js" defer></script>
 <!--    <script src="https://unpkg.com/hangul-js" type="text/javascript" defer></script> -->
+
 </head>
 
 <body>
     <div class="container">
-        <h3>Inputed text from the real or virtual Keyboard</h2>
-        <input type="text" id="textbox" autofocus>
         <h3>Intended Text</h2>
-        <p id="textDisplay">test</p>
+            <p id="textDisplay"></p>
+        <h3>Inputed text from the real or virtual Keyboard</h2>
+        <input type="text" id="textbox" placeholder="딸깍" autofocus>
         <fieldset>
             <legend>Select a keyboard layout:</legend>
             <div>
@@ -47,17 +48,45 @@
                 <li class="first">§</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>'</li><li>^</li><li id="backButton" class="backspace last">backspace</li>
             </ul>
             <ul class="qwe printable">
-                <li class="tab">tab</li><li>Q</li><li>W</li><li>E</li><li>R</li><li>T</li><li>Z</li><li>U</li><li>I</li><li>O</li><li>P</li><li>Ü</li><li>¨</li><li class="last">&nbsp</li>
+                <li class="tab">↹ tab</li><li>Q</li><li>W</li><li>E</li><li>R</li><li>T</li><li>Z</li><li>U</li><li>I</li><li>O</li><li>P</li><li>Ü</li><li>¨</li><li class="last">&nbsp</li>
             </ul>
             <ul class="asd printable">
-                <li class="capLock">capLock</li><li>A</li><li>S</li><li>D</li><li>F</li><li>G</li><li>H</li><li>J</li><li>K</li><li>L</li><li>ö</li><li>ä</li><li class="enter last">Enter</li>
+                <li class="capLock">⇪ capLock</li><li>A</li><li>S</li><li>D</li><li>F</li><li>G</li><li>H</li><li>J</li><li>K</li><li>L</li><li>ö</li><li>ä</li><li class="enter last">Enter</li>
             </ul>
             <ul class="yxc printable">
-                <li class="shift">Shift</li><li>Y</li><li>X</li><li>C</li><li>V</li><li>B</li><li>N</li><li>M</li><li>,</li><li>.</li><li>-</li><li class="rightShift last">Shift</li>
+                <li class="shift">⇧ Shift</li><li>&lt;</li><li>Y</li><li>X</li><li>C</li><li>V</li><li>B</li><li>N</li><li>M</li><li>,</li><li>.</li><li>-</li><li class="rightShift last">Shift ⇧</li>
             </ul>
             <ul class="control">
-                <li class="lang">fn</li><li>control</li><li>option</li><li class="command">command</li><li class="spaceBar">&nbsp</li><li class="command">command</li><li>option</li><li>left</li><li>updown</li><li class="right last">right</li>
+                <li class="lang">fn</li><li>control	^</li><li>opt ⎇</li><li class="command">command ⌘</li><li class="spaceBar">&nbsp</li><li class="command">⌘ command</li><li>⎇ opt</li><li>←</li><li>updown</li><li class="right last">→</li>
             </ul>
+
+
+            <style>
+                div.keyboard { position: relative; }
+                .overlayKeyboard { position: absolute; top: 20px; left: 5px; background-color: rgba(255, 128, 74, 0.049); pointer-events: none;}              
+            </style>
+            <div class="overlayKeyboard">
+                <ul class="fn overlay">
+                    <li class="esc">27</li><li>112</li><li>113</li><li>114</li><li>115</li><li>116</li><li>117</li><li>118</li><li>119</li><li>120</li><li>121</li><li>122</li><li>123</li><li class="fnLast last">__</li>
+                </ul>
+                <ul class="number overlay">
+                    <li class="first">192</li><li>49</li><li>50</li><li>51</li><li>52</li><li>53</li><li>54</li><li>55</li><li>56</li><li>57</li><li>48</li><li>222</li><li>187</li><li id="backButton" class="backspace last">8</li>
+                </ul>
+                <ul class="qwe overlay">
+                    <li class="tab">9</li><li>81</li><li>87</li><li>69</li><li>82</li><li>82</li><li>90</li><li>85</li><li>73</li><li>79</li><li>80</li><li>219</li><li>221</li><li class="last">&nbsp</li>
+                </ul>
+                <ul class="asd overlay">
+                    <li class="capLock">20</li><li>65</li><li>83</li><li>68</li><li>70</li><li>71</li><li>72</li><li>74</li><li>75</li><li>76</li><li>186</li><li>222</li><li class="enter last">13</li>
+                </ul>
+                <ul class="yxc overlay">
+                    <li class="shift">16</li><li>118</li><li>89</li><li>88</li><li>67</li><li>86</li><li>66</li><li>78</li><li>77</li><li>188</li><li>190</li><li>189</li><li class="rightShift last">16</li>
+                </ul>
+                <ul class="control overlay">
+                    <li class="lang">fn</li><li>17</li><li>18</li><li class="command">91</li><li class="spaceBar">&nbsp</li><li class="command">93</li><li>18</li><li>37</li><li>u38 d40</li><li class="right last">39</li>
+                </ul>
+            </div>
+
+
         </div>
 
         <button onclick="test()"></button>

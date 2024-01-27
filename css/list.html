@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Four Letters Layout</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    list-style-type: none;
+    padding: 0;
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto auto;
+    gap: 10px; /* Adjust the gap between items as needed */
+    width: 200px; /* Adjust width as needed */
+  }
+  
+  li {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px; /* Adjust font size as needed */
+  }
+
+</style>
+</head>
+<body>
+  <ul class="container">
+    <li class="top-left">A</li>
+    <li class="top-right">B</li>
+    <li class="bottom-left">C</li>
+    <li class="bottom-right">D</li>
+  </ul>
+</body>
+</html>

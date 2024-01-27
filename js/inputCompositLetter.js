@@ -41,25 +41,25 @@ const keyboardLayouts = {
         '1234567890\'^',
         'qwertzuiopü¨',
         'asdfghjklöä',
-        'yxcvbnm,.-'
+        '<yxcvbnm,.-'
     ],
     germanCapslock: [
         '+"*ç%&/()=?`',
         'QWERTZUIOPÜ¨',
         'ASDFGHJKLÖÄ',
-        'YXCVBNM;:_'
+        '>YXCVBNM;:_'
     ],
     korean: [
         '1234567890-=',
         'ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ[]',
         'ㅁㄴㅇㄹㅎㅗㅓㅏㅣ;\'',
-        'ㅋㅌㅊㅍㅠㅜㅡ,./'
+        '₩ㅋㅌㅊㅍㅠㅜㅡ,./'
     ],
     koreanCapslock: [
         '!@#$%^&*()_+',
         'ㅃㅉㄸㄲㅆㅛㅕㅑㅒㅖ{}',
         'ㅁㄴㅇㄹㅎㅗㅓㅏㅣ:\"',
-        'ㅋㅌㅊㅍㅠㅜㅡ<>?'
+        '~ㅋㅌㅊㅍㅠㅜㅡ<>?'
     ]
 };
 
@@ -96,7 +96,7 @@ function documentKeyPressed(event) {
 
 function updateTextDisplay() {
 
-    console.log('updateTextDisplay is called');
+    console.log('Hangul.d(textBox.value, true);', Hangul.d(textBox.value, true));
     // Display text in the "textDisplay" paragraph
     const textDisplayParagraph = document.getElementById('textDisplay');
     if (textDisplayParagraph) {
@@ -106,7 +106,13 @@ function updateTextDisplay() {
 }
 
 var superDelete = false;
-function simulateBackspace() { // 딸깍 ->딹 으로 변함, 딸ㄱ 으로 변하게 수정필요
+function simulateBackspace() { // 딸깍+bbb = 딸ㄱ 이어야함. 딹 으로 변함?. 딸ㄱ 으로 변하게 수정필요, 바+화살표+ㄱ=바ㄱ 으로 표시되어야함.
+    
+    console.log("textBox.value", textBox.value);
+    var leftoverLetter = textBox.value.slice(0, -1);
+    console.log("leftoverLetter", leftoverLetter);
+    var lastLetter = textBox.value.slice(-1);
+    console.log("lastLetter", lastLetter);
 
     var groups = Hangul.d(textBox.value, true);
     var lastGroup = groups[groups.length-1];

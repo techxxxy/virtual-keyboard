@@ -85,7 +85,17 @@ ul.overlay li {
     background: #ffffff00;
     box-shadow: none;
     border: solid 1px rgba(255, 255, 255, 0);
+    text-align: left;
+    color: rgb(112, 112, 112);
     
+}
+
+ul.overlay {
+    margin-top:0.29cm;    
+}
+
+ul.number, .qwe, .asd, .yxc, .control{
+    margin-top:0.29cm;
 }
 
 
@@ -114,9 +124,7 @@ li:active, .keydown {
 		0 0 3px #333;
 	border-top: 1px solid #eee;}
 
-ul.number, .qwe, .asd, .yxc, .control{
-    margin-top:0.29cm;
-}
+
 
 .esc {
     width: 2.56cm;
@@ -144,7 +152,7 @@ ul.number, .qwe, .asd, .yxc, .control{
 }
 
 .shift{
-    width: 4.05cm;
+    width: 2.1cm;
 }
 .rightShift{
     width: 4cm;
