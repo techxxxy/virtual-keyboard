@@ -5,13 +5,13 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif, "Arial Rounded";
+    font-size: 0.35cm;
 }
 
 .container {
     display: flex;
     flex-direction: column;
 }
-
 
 .keyboard {
     transform: perspective(28.4cm) rotateX(20deg);
@@ -60,18 +60,18 @@ li {
 .esc        { width: 2.56cm; border-top-left-radius: 0.7cm; }
 .tab        { width: 2.58cm; }
 .fnLast     { border-top-right-radius: 0.7cm; }
-.last       { margin-right: 0; }
+.last-key       { margin-right: 0; }
 .backspace  { width: 2.58cm; }
 .capsLock   { width: 3.05cm; }
 .enter      { width: 3.05cm; }
 .shift      { width: 2.1cm; }
-.rightShift { width: 4cm; }
+.right-shift { width: 4cm; }
 .lang       { border-bottom-left-radius: 0.7cm;}
-.spaceBar   { width: 9.3cm; }
+.space-bar   { width: 9.3cm; }
 .right      { border-bottom-right-radius: 0.7cm; }
 .command    { width: 2.1cm; font-size: 0.35cm; padding: 0; vertical-align: text-bottom; }
 
-ul.number, .qwe, .asd, .yxc, .ctrl { margin-top: 0.29cm;}
+.number-keys, .alpabets-qwe, .alpabets-asd, .alpabets-yxc, .control-keys { margin-top: 0.29cm;}
 
 li:active, .keydown, ul.printable li:not([class]):active {
     background: radial-gradient(at 40% 1%, #c4c4c4 5%, rgb(214, 217, 214) 70%);
@@ -104,7 +104,7 @@ li > div div{
  /* ㅋ, ㅌ,... is located in bottom left on a key */ 
 .ko1 {line-height: 0.3cm; margin-top: 0.2cm; vertical-align: middle; text-align: left; padding-left: 0.15cm; }
  /* ㅕ,ㅑ, ㅐ, needs to shift to the left */ 
-.vowls {padding-left: 0.1cm; margin-top: 0.1cm; }
+.vowel {padding-left: 0.1cm; margin-top: 0.1cm; }
 /* ㅃ, ㅂ, ㅉ, ㅈ is located in left on a key */
 .ko2 { margin-top: 0.1cm; width: 0.7cm; line-height: 0.6cm; vertical-align: bottom; }
  /* Y, X... is located in top right on a key */
@@ -112,41 +112,41 @@ li > div div{
 
  /* Fn key Group: two symbols are located in vertically */
 li.esc>div { font-size: 0.35cm; line-height: 0.3cm; margin-top: 1cm; margin-left: 0.3cm; text-align: left; }
-ul.fn > li > div { display: grid; grid-template-columns: repeat(1, 1fr); }
+ul.function-keys > li > div { display: grid; grid-template-columns: repeat(1, 1fr); }
 .symbol { height:0.6cm; line-height: 0.6cm; text-align: center; margin-top: 0.2cm; }
-.fnKey { font-size: 0.3cm; line-height: 0.6cm; text-align: center; }
+.fn { font-size: 0.3cm; line-height: 0.6cm; text-align: center; }
 
 /* eject key on top*/
 div.eject {line-height: 0.3cm; margin-top: 0.5cm;  }
 
 /* Number key group: two symbols are located in vertically */
-ul.number > li > div { display: grid; grid-template-columns: repeat(1, 1fr); }
-.up {margin-top: 0.4cm; line-height: 0.1cm; text-align: center; }
-.down {margin-top: 0.3cm; line-height: 0.5cm; text-align: center; }
+ul.number-keys > li > div { display: grid; grid-template-columns: repeat(1, 1fr); }
+.upper-part {margin-top: 0.4cm; line-height: 0.1cm; text-align: center; }
+.lower-part {margin-top: 0.3cm; line-height: 0.5cm; text-align: center; }
 
 li.backspace>div { line-height: 0.3cm; margin-top: 0.8cm; margin-left: 1.45cm; }
 li.tab > div { line-height: 0.3cm; margin-top: 0.85cm; margin-right: 1.5cm; }
 
 li.capsLock > div { display: grid; grid-template-columns: repeat(1, 1fr); }
-li.capsLock div.down {font-size: 0.4cm; letter-spacing: 0.05cm; margin-top:0.4cm; margin-right: 1.6cm }
-li.capsLock div.up{ margin-right:2.3cm; margin-top: 0.3cm; line-height: 0.1cm; }
+li.capsLock div.lower-part {font-size: 0.4cm; letter-spacing: 0.05cm; margin-top:0.4cm; margin-right: 1.6cm }
+li.capsLock div.upper-part{ margin-right:2.3cm; margin-top: 0.3cm; line-height: 0.1cm; }
 
 li.enter div { margin: 0.6cm 0cm 0cm 2cm; }
 li.shift div { line-height: 0.5cm; margin-right:1.1cm; margin-top: 0.8cm; }
 li.shift span { transform: scale(1.1, 0.8); }
-li.rightShift div{ line-height: 0.5cm; margin-left:3cm; margin-top: 0.8cm; }
-li.rightShift span { transform: scale(1.1, 0.8); }
+li.right-shift div{ line-height: 0.5cm; margin-left:3cm; margin-top: 0.8cm; }
+li.right-shift span { transform: scale(1.1, 0.8); }
 
-ul.ctrl li div{ line-height: 0.72cm; height: 0.72cm; font-size: 0.38cm; }
-ul.ctrl span{ transform: scale(0.8, 0.8);}
+ul.control-keys li div{ line-height: 0.72cm; height: 0.72cm; font-size: 0.38cm; }
+ul.control-keys span{ transform: scale(0.8, 0.8);}
 
 .control, .option, .commandL,.language {text-align: right; margin-right:0.1cm; margin-top: 0.1cm;}
 .language {margin-right:0.2cm; text-align: right;}
 li.lang :not(.language) {margin-right:0.3cm}
-.commandR, .rightOption {text-align: left; margin-left:0.1cm; margin-top: 0.1cm;}
-ul.ctrl li div.arrow {line-height: 1cm; height:1cm; margin-top:0.4cm;}
+.commandR, .right-option {text-align: left; margin-left:0.1cm; margin-top: 0.1cm;}
+ul.control-keys li div.arrow {line-height: 1cm; height:1cm; margin-top:0.4cm;}
 
-ul.ctrl { position:relative;}
+ul.control-keys { position:relative;}
 li.upArrow { position:absolute; left:24.1cm; line-height: 0.7cm; height:0.7cm;
 border-radius: 0.15cm 0.15cm 0 0;
 }

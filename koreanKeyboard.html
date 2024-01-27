@@ -8,41 +8,41 @@
     <title>Apple Keyboard with CSS</title>
 </head>
 <body>
-    <div> <!-- Removing this <div> element may cause the <li> items to overflow outside of the keyboard shape. -->
+    <div class="container"> <!-- Removing this <div> element may cause the <li> items to overflow outside of the keyboard shape. -->
          <div class="keyboard">
-            <ul class="fn">
+            <ul class="funtion-keys">
                 <li class="esc"><div>esc</div></li>
-                <li><div><div class="symbol">&#9728;</div><div class="fnKey">F1 </div></div></li>
-                <li><div><div class="symbol">&#9788;</div><div class="fnKey">F2 </div></div></li>
-                <li><div><div class="symbol"><span class="material-symbols-outlined"> view_module </span>   </div><div class="fnKey">F3 </div></div></li>
-                <li><div><div class="symbol"><span class="material-symbols-outlined">search</span>  </div><div class="fnKey">F4 </div></div></li>
-                <li><div><div class="symbol"><span class="material-symbols-outlined">mic</span>  </div><div class="fnKey">F5 </div></div></li>
-                <li><div><div class="symbol"><span class="material-symbols-outlined"> dark_mode </span></div><div class="fnKey">F6 </div></div></li>
-                <li><div><div class="symbol">&#x23ee;  </div><div class="fnKey">F7 </div></div></li>
-                <li><div><div class="symbol">&#x23ef; </div><div class="fnKey">F8 </div></div></li>
-                <li><div><div class="symbol">&#x23ee; </div><div class="fnKey">F9 </div></div></li>
-                <li><div><div class="symbol"><span class="material-symbols-outlined"> volume_mute </span>  </div><div class="fnKey">F10</div></div></li>
-                <li><div><div class="symbol"> <span class="material-symbols-outlined"> volume_down </span> </div><div class="fnKey">F11</div></div></li>
-                <li><div><div class="symbol"><span class="material-symbols-outlined"> volume_up </span>  </div><div class="fnKey">F12</div></div></li>
-                <li class="fnLast last"><div class="eject"><span class="material-symbols-outlined">eject</span></div></li>
+                <li><div><div class="symbol">&#9728;</div><div class="fn">F1 </div></div></li>
+                <li><div><div class="symbol">&#9788;</div><div class="fn">F2 </div></div></li>
+                <li><div><div class="symbol"><span class="material-symbols-outlined"> view_module </span>   </div><div class="fn">F3 </div></div></li>
+                <li><div><div class="symbol"><span class="material-symbols-outlined">search</span>  </div><div class="fn">F4 </div></div></li>
+                <li><div><div class="symbol"><span class="material-symbols-outlined">mic</span>  </div><div class="fn">F5 </div></div></li>
+                <li><div><div class="symbol"><span class="material-symbols-outlined"> dark_mode </span></div><div class="fn">F6 </div></div></li>
+                <li><div><div class="symbol">&#x23ee;  </div><div class="fn">F7 </div></div></li>
+                <li><div><div class="symbol">&#x23ef; </div><div class="fn">F8 </div></div></li>
+                <li><div><div class="symbol">&#x23ee; </div><div class="fn">F9 </div></div></li>
+                <li><div><div class="symbol"><span class="material-symbols-outlined"> volume_mute </span>  </div><div class="fn">F10</div></div></li>
+                <li><div><div class="symbol"> <span class="material-symbols-outlined"> volume_down </span> </div><div class="fn">F11</div></div></li>
+                <li><div><div class="symbol"><span class="material-symbols-outlined"> volume_up </span>  </div><div class="fn">F12</div></div></li>
+                <li class="fnLast last-key"><div class="eject"><span class="material-symbols-outlined">eject</span></div></li>
             </ul>
-            <ul class="number printable">
-                <li class="first"><div> <div class="up">°</div> <div class="down">§ </div> </div> </li></li>
-                <li> <div> <div class="up">+         </div> <div class="down">1      </div> </div> </li>
-                <li> <div> <div class="up">&quot;    </div> <div class="down">2      </div> </div> </li>
-                <li> <div> <div class="up">&ast;     </div> <div class="down">3      </div> </div> </li>
-                <li> <div> <div class="up">ç         </div> <div class="down">4      </div> </div> </li>
-                <li> <div> <div class="up">&percnt;  </div> <div class="down">5      </div> </div> </li>
-                <li> <div> <div class="up">&amp;     </div> <div class="down">6      </div> </div> </li>
-                <li> <div> <div class="up">&sol;     </div> <div class="down">7      </div> </div> </li>
-                <li> <div> <div class="up">&lpar;    </div> <div class="down">8      </div> </div> </li>
-                <li> <div> <div class="up">&rpar;    </div> <div class="down">9      </div> </div> </li>
-                <li> <div> <div class="up">=         </div> <div class="down">0      </div> </div> </li>
-                <li> <div> <div class="up">&quest;   </div> <div class="down">&apos; </div> </div> </li>
-                <li> <div> <div class="up">&grave;   </div> <div class="down">&Hat;  </div> </div> </li>
-                <li id="backButton" class="backspace last"><div><span class="material-symbols-outlined"> backspace </span></div></li>
+            <ul class="number-keys printable">
+                <li class="first"><div> <div class="upper-part">°</div> <div class="lower-part">§ </div> </div> </li></li>
+                <li> <div> <div class="upper-part">+         </div> <div class="lower-part">1      </div> </div> </li>
+                <li> <div> <div class="upper-part">&quot;    </div> <div class="lower-part">2      </div> </div> </li>
+                <li> <div> <div class="upper-part">&ast;     </div> <div class="lower-part">3      </div> </div> </li>
+                <li> <div> <div class="upper-part">ç         </div> <div class="lower-part">4      </div> </div> </li>
+                <li> <div> <div class="upper-part">&percnt;  </div> <div class="lower-part">5      </div> </div> </li>
+                <li> <div> <div class="upper-part">&amp;     </div> <div class="lower-part">6      </div> </div> </li>
+                <li> <div> <div class="upper-part">&sol;     </div> <div class="lower-part">7      </div> </div> </li>
+                <li> <div> <div class="upper-part">&lpar;    </div> <div class="lower-part">8      </div> </div> </li>
+                <li> <div> <div class="upper-part">&rpar;    </div> <div class="lower-part">9      </div> </div> </li>
+                <li> <div> <div class="upper-part">=         </div> <div class="lower-part">0      </div> </div> </li>
+                <li> <div> <div class="upper-part">&quest;   </div> <div class="lower-part">&apos; </div> </div> </li>
+                <li> <div> <div class="upper-part">&grave;   </div> <div class="lower-part">&Hat;  </div> </div> </li>
+                <li id="backButton" class="backspace last-key"><div><span class="material-symbols-outlined"> backspace </span></div></li>
             </ul>
-            <ul class="qwe printable">
+            <ul class="alpabets-qwe printable">
                 <li class="tab"><div><span class="material-symbols-outlined"> keyboard_tab </span></div></li>
                 <li> <div class="qType"> <div class="ko2">ㅃ    </div> <div class="de1">Q       </div> <div class="ko2">ㅂ</div> </div> </li>
                 <li> <div class="qType"> <div class="ko2">ㅉ    </div> <div class="de1">W       </div> <div class="ko2">ㅈ</div> </div> </li>
@@ -50,30 +50,30 @@
                 <li> <div class="qType"> <div class="ko2">ㄲ    </div> <div class="de1">R       </div> <div class="ko2">ㄱ</div> </div> </li>
                 <li> <div class="qType"> <div class="ko2">ㅆ    </div> <div class="de1">T       </div> <div class="ko2">ㅅ</div> </div> </li>
                 <li> <div class="aType"> <div class="de1">Z    </div> <div class="ko1">ㅛ       </div> </div> </li>
-                <li> <div class="aType"> <div class="de1">U    </div> <div class="ko1 vowls">ㅕ </div> </div> </li>
-                <li> <div class="aType"> <div class="de1">I    </div> <div class="ko1 vowls">ㅑ </div> </div> </li>
+                <li> <div class="aType"> <div class="de1">U    </div> <div class="ko1 vowel">ㅕ </div> </div> </li>
+                <li> <div class="aType"> <div class="de1">I    </div> <div class="ko1 vowel">ㅑ </div> </div> </li>
                 <li> <div class="qType"> <div class="ko2">ㅒ    </div> <div class="de1">O       </div> <div class="ko2">ㅐ</div> </div> </li>
                 <li> <div class="qType"> <div class="ko2">ㅖ    </div> <div class="de1">P       </div> <div class="ko2">ㅔ</div> </div> </li>
                 <li>é &nbsp&nbsp ö</li>
-                <li> <div> <div class="up">&excl;</div> <div class="up">&quot;</div> </div> </li>
-                <li class="last">&nbsp</li>
+                <li> <div> <div class="upper-part">&excl;</div> <div class="upper-part">&quot;</div> </div> </li>
+                <li class="last-key">&nbsp</li>
             </ul>
-            <ul class="asd printable">
-                <li class="capsLock"><div> <div class="up">&#x2022;</div> <div class="down">한/A</div></div></li>
+            <ul class="alpabets-asd printable">
+                <li class="capsLock"><div> <div class="upper-part">&#x2022;</div> <div class="lower-part">한/A</div></div></li>
                 <li> <div class="aType"> <div class="de1">A</div> <div class="ko1">ㅁ</div> </div> </li>
                 <li> <div class="aType"> <div class="de1">S</div> <div class="ko1">ㄴ</div> </div> </li>
                 <li> <div class="aType"> <div class="de1">D</div> <div class="ko1">ㅇ</div> </div> </li>
                 <li> <div class="aType"> <div class="de1">F</div> <div class="ko1">ㄹ</div> </div> </li>
                 <li> <div class="aType"> <div class="de1">G</div> <div class="ko1">ㅎ</div> </div> </li>
                 <li> <div class="aType"> <div class="de1">H</div> <div class="ko1">ㅗ</div> </div> </li>
-                <li> <div class="aType"> <div class="de1">J</div> <div class="ko1 vowls">ㅓ</div> </div> </li>
-                <li> <div class="aType"> <div class="de1">K</div> <div class="ko1 vowls">ㅏ</div> </div> </li>
-                <li> <div class="aType"> <div class="de1">L</div> <div class="ko1 vowls">ㅣ</div> </div> </li>
+                <li> <div class="aType"> <div class="de1">J</div> <div class="ko1 vowel">ㅓ</div> </div> </li>
+                <li> <div class="aType"> <div class="de1">K</div> <div class="ko1 vowel">ㅏ</div> </div> </li>
+                <li> <div class="aType"> <div class="de1">L</div> <div class="ko1 vowel">ㅣ</div> </div> </li>
                 <li>é &nbsp;&nbsp; ö</li>
                 <li>à &nbsp;&nbsp; ä</li>
-                <li class="enter last"><div><span class="material-symbols-outlined"> keyboard_return </span></div></li>
+                <li class="enter last-key"><div><span class="material-symbols-outlined"> keyboard_return </span></div></li>
             </ul>
-            <ul class="yxc printable">
+            <ul class="alpabets-yxc printable">
                 <li class="shift"><div><span class="material-symbols-outlined"> shift </span></div></li>
                 <li>&lt;</li>
                 <li> <div class="aType"> <div class="de1">Y</div> <div class="ko1">ㅋ</div> </div> </li>
@@ -83,23 +83,23 @@
                 <li> <div class="aType"> <div class="de1">B</div> <div class="ko1">ㅠ</div> </div> </li>
                 <li> <div class="aType"> <div class="de1">N</div> <div class="ko1">ㅜ</div> </div> </li>
                 <li> <div class="aType"> <div class="de1">M</div> <div class="ko1">ㅡ</div> </div> </li>
-                <li> <div class="numberType"> <div class="up">&#x3b;</div> <div class="down">,</div> </div> </li>
-                <li> <div class="numberType"> <div class="up">:</div> <div class="down">.</div> </div> </li>
-                <li> <div class="numberType"> <div class="up">&horbar;</div> <div class="down">-</div> </div> </li>
-                <li class="rightShift last"><div><span class="material-symbols-outlined"> shift </span></div></li>
+                <li> <div class="numberType"> <div class="upper-part">&#x3b;</div> <div class="lower-part">,</div> </div> </li>
+                <li> <div class="numberType"> <div class="upper-part">:</div> <div class="lower-part">.</div> </div> </li>
+                <li> <div class="numberType"> <div class="upper-part">&horbar;</div> <div class="lower-part">-</div> </div> </li>
+                <li class="right-shift last-key"><div><span class="material-symbols-outlined"> shift </span></div></li>
             </ul>
-            <ul class="ctrl">
+            <ul class="control-keys">
                 <li class="lang"><div class="language">fn</div><div><span class="material-symbols-outlined">language</span></div></li>
                 <li><div class="control"><span class="material-symbols-outlined"> keyboard_control_key </span></div><div>control </div></li>
                 <li><div class="option"> <span class="material-symbols-outlined"> keyboard_option_key </span></div><div>option</div></li>
                 <li class="command"><div class="commandL"><span class="material-symbols-outlined"> keyboard_command_key </span></div><div>command</div></li>
-                <li class="spaceBar">&nbsp</li>
+                <li class="space-bar">&nbsp</li>
                 <li class="command"><div class="commandR"><span class="material-symbols-outlined"> keyboard_command_key </span></div> <div>command</div></li>
-                <li><div class="rightOption"><span class="material-symbols-outlined"> keyboard_option_key </span></div><div> opiont</div></li>
+                <li><div class="right-option"><span class="material-symbols-outlined"> keyboard_option_key </span></div><div> opiont</div></li>
                 <li><div class="arrow"><span class="material-symbols-outlined"> arrow_left </span></div></li>
                 <li class="upArrow"><span class="material-symbols-outlined"> arrow_drop_up </span></li>
                 <li class="downArrow"><span class="material-symbols-outlined">arrow_drop_down</span></li>               
-                <li class="right last"><div class="arrow"><span class="material-symbols-outlined">arrow_right </span></div></li>
+                <li class="right last-key"><div class="arrow"><span class="material-symbols-outlined">arrow_right </span></div></li>
             </ul>
         </div>
     </div>
