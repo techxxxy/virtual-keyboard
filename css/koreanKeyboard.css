@@ -1,34 +1,30 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif, "Arial Rounded";
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+
 .keyboard {
-    -webkit-transform: perspective(28.4cm) rotateX(20deg);
+    transform: perspective(28.4cm) rotateX(20deg);
     border: 1px solid rgb(231, 231, 231);
     border-radius: 1cm;
     margin: 20px;
     width: 28.4cm;
     height: 11.6cm;
-    /* background-image: url("./img/apple-ko-27_9-11_49.png"); */
-    background-repeat: no-repeat;
     background: #bec4c6;
     /* not selectable text */
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: default;
+    -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; cursor: default;
 
-    background-image:    
-    -webkit-gradient(
-        linear,
-        left top,
-        right bottom,
-        color-stop(0.03, #ededed),
-        color-stop(0.08, #ffffff),
-        color-stop(0.30, #dbdbdb),
-        color-stop(0.64, #bdbcbc),
-        color-stop(0.95, #606060a5),
-        color-stop(1,#464646a5)
-    ); 
-
+    background-image: -webkit-gradient( linear, left top, right bottom, color-stop(0.03, #ededed), color-stop(0.08, #ffffff), color-stop(0.30, #dbdbdb), color-stop(0.64, #bdbcbc), color-stop(0.95, #606060a5), color-stop(1,#464646a5) ); 
     -webkit-box-shadow: inset 0px 0px 1px #d3d3d3, 0 1px 0 #807f7f, 0px -1px 0px #b6b6b6, -1px 0px 0px #b6b6b6, 10px -5px 20px #e0e0e0, 0 4px 0 #878787, 0 15px 20px #9d9d9d;
     -moz-box-shadow: inset 0px 0px 1px #d3d3d3, 0 1px 0 #807f7f, 0px -1px 0px #b6b6b6, -1px 0px 0px #b6b6b6, 10px -5px 20px #e0e0e0, 0 4px 0 #878787, 0 15px 20px #9d9d9d;
     box-shadow: inset 0px 0px 1px #d3d3d3, 0 1px 0 #807f7f, 0px -1px 0px #b6b6b6, -1px 0px 0px #b6b6b6, 10px -5px 20px #e0e0e0, 0 4px 0 #878787, 0 15px 20px #9d9d9d;
@@ -55,17 +51,9 @@ li {
     color: #82847f;
     text-shadow: 0 0.3cm 0.4cm rgb(255, 255, 255), 1px 1px 1px rgb(252, 252, 252);
 
-    -webkit-box-shadow: inset 0px 0 25px #ffffff, 0px -1px 0 #6c6c6c, 0 2px 0 #6c6c6c, 1px 3px 0 #484848, 0 2px 0 #c9c9c9, 0 2px 4px #494949;
+    -webkit-box-shadow: inset 0 0 25px #ffffff,  0 2px 0 #6c6c6c, 1px 3px 0 #484848, 0 2px 0 #c9c9c9, 0 2px 3px #333;
     -moz-box-shadow: inset 0 0 25px #ffffff,  0 2px 0 #6c6c6c, 1px 3px 0 #484848, 0 2px 0 #c9c9c9, 0 2px 3px #333;
     box-shadow: inset 0 0 25px #ffffff,  0 2px 0 #6c6c6c, 1px 3px 0 #484848, 0 2px 0 #c9c9c9, 0 2px 3px #333;
-}
-
-ul.overlay li {
-    background: #ffffff00;
-    box-shadow: none;
-    border: solid 1px rgba(255, 255, 255, 0);
-    text-align: left;
-    color: rgb(112, 112, 112);
 }
 
 /* li style: special keys including space bar, esc  */
@@ -74,54 +62,53 @@ ul.overlay li {
 .fnLast     { border-top-right-radius: 0.7cm; }
 .last       { margin-right: 0; }
 .backspace  { width: 2.58cm; }
-.capsLock    { width: 3.05cm; }
+.capsLock   { width: 3.05cm; }
 .enter      { width: 3.05cm; }
 .shift      { width: 2.1cm; }
 .rightShift { width: 4cm; }
 .lang       { border-bottom-left-radius: 0.7cm;}
 .spaceBar   { width: 9.3cm; }
 .right      { border-bottom-right-radius: 0.7cm; }
-.command { width: 2.1cm; font-size: 0.35cm; padding: 0; vertical-align: text-bottom; }
+.command    { width: 2.1cm; font-size: 0.35cm; padding: 0; vertical-align: text-bottom; }
 
 ul.number, .qwe, .asd, .yxc, .ctrl { margin-top: 0.29cm;}
 
-ul.overlay {
-    margin-top: 0.29cm;
-}
-
-/* printable key has a  */
-ul.printable li:not([class]) {
-    background: radial-gradient(at 40% 1%, rgb(233, 233, 231) 5%, #ffffff 70%);
-}
-
-ul.printable li:active:not([class]) {
-    background: radial-gradient(at 40% 1%, rgb(214, 217, 214) 5%, #ebeced 70%);
-}
-
-li:active,
-.keydown {
-    background: #ebeced;
-    border: solid 1px #6f6f6f;
+li:active, .keydown, ul.printable li:not([class]):active {
+    background: radial-gradient(at 40% 1%, #c4c4c4 5%, rgb(214, 217, 214) 70%);
+    border: solid 1px #8e8e8e;
     margin: 0.05cm 0.28cm 0cm 0cm;
     color: #888;
     -webkit-box-shadow: inset 1px 1px 20px #c4c4c4, 0 1px 3px #333, 0 -1px 1px #545454;
     -moz-box-shadow: inset 1px 1px 20px #c4c4c4, 0 1px 3px #333, 0 -1px 1px #545454;
-    box-shadow: inset 1px 1px 20px #c4c4c4, 0 1px 3px #333, 0 -1px 1px #545454;
+    box-shadow: inset 0 -1px 0px #f4f4f4, 0 1px 3px #333, 0 -1px 1px #363636, 0 1px 1px #494949;
 }
+
+/* printable key has a groov */
+ul.printable li:not([class]) {
+    background: radial-gradient(at 40% 1%, rgb(213, 213, 213) 5%, #ffffff 70%);
+}
+
+/* ul.printable li:active:not([class]) {
+    background: radial-gradient(at 40% 1%, rgb(214, 217, 214) 5%, #ebeced 70%);
+} */
 
 li > div div{
     border: solid 1px rgba(0, 0, 0, 0);
-    font-family: Arial;
     font-size: 0.5cm;
 }
 
 .aType { display: grid; grid-template-columns: repeat(1, 1fr); }
 .qType { display: grid; grid-template-columns: repeat(2, 1fr); }
-.de1 { /* Y, X... is located in top right on a key */ line-height: 0.5cm; text-align: right; padding-right: 0.2cm; padding-top: 0.1cm; margin-top: 0.1cm }
-.ko1 { /* ㅋ, ㅌ,... is located in bottom left on a key */ line-height: 0.3cm; /* to place vowls in middle, line-height should be small */ margin-top: 0.2cm; vertical-align: middle; text-align: left; padding-left: 0.15cm; }
-.vowls { /* ㅕ,ㅑ, ㅐ, needs to shift to the left */ padding-left: 0.1cm; margin-top: 0.1cm; }
-.ko2 { /* ㅃ, ㅂ, ㅉ, ㅈ is located in left on a key */ margin-top: 0.1cm; width: 0.7cm; line-height: 0.6cm; vertical-align: bottom; }
-.qType .de1 { /* Y, X... is located in top right on a key */ width: 0.6cm; }
+/* Y, X... is located in top right on a key */ 
+.de1 { line-height: 0.5cm; text-align: right; padding-right: 0.2cm; padding-top: 0.1cm; margin-top: 0.1cm }
+ /* ㅋ, ㅌ,... is located in bottom left on a key */ 
+.ko1 {line-height: 0.3cm; margin-top: 0.2cm; vertical-align: middle; text-align: left; padding-left: 0.15cm; }
+ /* ㅕ,ㅑ, ㅐ, needs to shift to the left */ 
+.vowls {padding-left: 0.1cm; margin-top: 0.1cm; }
+/* ㅃ, ㅂ, ㅉ, ㅈ is located in left on a key */
+.ko2 { margin-top: 0.1cm; width: 0.7cm; line-height: 0.6cm; vertical-align: bottom; }
+ /* Y, X... is located in top right on a key */
+.qType .de1 { width: 0.6cm; }
 
  /* Fn key Group: two symbols are located in vertically */
 li.esc>div { font-size: 0.35cm; line-height: 0.3cm; margin-top: 1cm; margin-left: 0.3cm; text-align: left; }
@@ -149,11 +136,6 @@ li.shift div { line-height: 0.5cm; margin-right:1.1cm; margin-top: 0.8cm; }
 li.shift span { transform: scale(1.1, 0.8); }
 li.rightShift div{ line-height: 0.5cm; margin-left:3cm; margin-top: 0.8cm; }
 li.rightShift span { transform: scale(1.1, 0.8); }
-
-/* the last row of keys: control, option, spacebar */
-/* li.lang>div{display: grid; grid-template-columns: repeat(1, 1fr);}
-li.lang>div>div { font-size: 0.4cm; line-height: 0.4cm; text-align: right; margin-top: 0.1cm; margin-right:0.2cm;}
-li.lang>div>span {font-size:0.5cm; line-height: 0.1cm; text-align: left; margin:0.4cm 0 0 0.2cm; } */
 
 ul.ctrl li div{ line-height: 0.72cm; height: 0.72cm; font-size: 0.38cm; }
 ul.ctrl span{ transform: scale(0.8, 0.8);}

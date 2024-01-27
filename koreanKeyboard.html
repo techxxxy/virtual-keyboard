@@ -1,47 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/koreanKeyboard.css">
-    <link rel="stylesheet" href="./css/icons.css">
-        <title>Apple Keyboard with CSS</title>
-
-    <style>
-        div.keyboard {
-            position: relative;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 15px;
-            background-color: rgba(255, 128, 74, 0.081);
-            pointer-events: none;
-        }
-
-        #sdiv1 {
-            position: absolute;
-            pointer-events: none;
-            width: 28.4cm;
-            height: 11.6cm;
-            z-index: 3;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/icons.css"> <!-- Google Material Symbols https://fonts.google.com/icons -->
+    <title>Apple Keyboard with CSS</title>
 </head>
-
 <body>
-
-    <div> <!-- without div keys will be overflowed when screen is small-->
-        <div class="keyboard">
-            <!--<img id="sdiv1" style="opacity: 0.2;" src="./img/apple-ko-27_9-11_49.png">
-            <div id='sdiv1' style="border: 1px solid #000;">div1</div>
-            <div id='sdiv2' style="border: 1px solid #000;">div2</div>
-            <ul class='overlay'>
-                <li class="esc">esc</li><li>F1</li><li>F2</li><li>F3</li><li>F4</li><li>F5</li><li>F6</li><li>F7</li><li>F8</li><li>F9</li><li>F10</li><li>F11</li><li>F12</li><li class="fnLast last">__</li>
-            </ul> -->
-            <ul class="fn" id="list1">
+    <div> <!-- Removing this <div> element may cause the <li> items to overflow outside of the keyboard shape. -->
+         <div class="keyboard">
+            <ul class="fn">
                 <li class="esc"><div>esc</div></li>
                 <li><div><div class="symbol">&#9728;</div><div class="fnKey">F1 </div></div></li>
                 <li><div><div class="symbol">&#9788;</div><div class="fnKey">F2 </div></div></li>

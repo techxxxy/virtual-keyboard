@@ -12,9 +12,6 @@ body {
     flex-direction: column;
 }
 
-inputm {
-
-}
 input [type="text"] {
     width: 20vh;
 }
