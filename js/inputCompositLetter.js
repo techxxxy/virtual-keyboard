@@ -44,18 +44,22 @@ typingKeys.forEach(function(element) {
 
     const backspaceButton = document.getElementById('backspace'); // replace 'backButton' with the actual id of your button
     if (backspaceButton) {
-        backspaceButton.addEventListener('click', simulateBackspace);
+        backspaceButton.addEventListener('click', backspaceClicked);
     }
 
     const enterButton = document.getElementById('enter'); // replace 'backButton' with the actual id of your button
     if (enterButton) {
-        enterButton.addEventListener('click', simulateEnter);
+        enterButton.addEventListener('click', enterClicked);
     }
 
     const capslockButton = document.getElementById('capslock'); // replace 'backButton' with the actual id of your button
     if (capslockButton) {
-        capslockButton.addEventListener('click', simulateCapslock);
+        capslockButton.addEventListener('click', capslockClicked);
     }
+
+    document.querySelectorAll('input[name="keyboardLayout"]').forEach(radio => {
+        radio.addEventListener('change', radioButtonChanged);
+    });
 
 /*     function setupButtonClickEvent(buttonId, handlerFunction) {
         const button = document.getElementById(buttonId);
@@ -64,33 +68,35 @@ typingKeys.forEach(function(element) {
         }
     }
 
-    setupButtonClickEvent('backspace', simulateBackspace);
-    setupButtonClickEvent('enter', simulateEnter);
-    setupButtonClickEvent('capslock', simulateCapslock); */
+    setupButtonClickEvent('backspace', backspaceClicked);
+    setupButtonClickEvent('enter', enterClicked);
+    setupButtonClickEvent('capslock', capslockClicked); */
 
     // Event listener for radio buttons
-    document.querySelectorAll('input[name="keyboardLayout"]').forEach((radio) => {
-        radio.addEventListener('change', (event) => {
-            //textBox.focus();
-            console.log('Radio button changed');
-            let selectedLayout = event.target.id;
-            console.log('selectedLayout', selectedLayout);
+    // document.querySelectorAll('input[name="keyboardLayout"]').forEach((radio) => {
+    //     radio.addEventListener('change', (event) => {
+    //         //textBox.focus();
+    //         console.log('Radio button changed');
+    //         let selectedLayout = event.target.id;
+    //         console.log('selectedLayout', selectedLayout);
 
-            if (selectedLayout == 'original') {
-                changeKeyboardToOriginal(keyboardLayouts[selectedLayout]);
-            } else {
-                simulateCapslock(selectedLayout); // depending language, capsLock light must be on or off
-                if (keyboardLayouts[selectedLayout]) {
-                    console.log('keyboardLayouts[selectedLayout]', keyboardLayouts[selectedLayout]);
-                    changeKeyboard(keyboardLayouts[selectedLayout]);
-                    selectedLanguage = selectedLayout;
-                    console.log('selectedLanguage', selectedLanguage);
-                } else {
-                    //console.log('Layout does not exist:', selectedLayout);
-                }
-            }
-       });
-    });
+    //         if (selectedLayout == 'original') {
+    //             changeKeyboardToOriginal(keyboardLayouts[selectedLayout]);
+    //         } else {
+    //             if (keyboardLayouts[selectedLayout]) {
+    //                 console.log('keyboardLayouts[selectedLayout]', keyboardLayouts[selectedLayout]);
+    //                 changeKeyboard(keyboardLayouts[selectedLayout]);
+    //                 selectedLanguage = selectedLayout;
+    //                 console.log('selectedLanguage', selectedLanguage);
+    //                 capslockClicked(selectedLayout); 
+    //                 console.log('selectedLayout ', selectedLayout);// depending language, capsLock light must be on or off
+    //             } else {
+    //                 console.log('Layout does not exist:', selectedLayout);
+    //             }
+    //         }
+    //    });
+    // });
+
 });
 
 const keyboardLayouts = {
@@ -223,7 +229,6 @@ function documentKeyPressed(event) {
 
 
 
-
 function updateTextDisplay() {
     textDisplay = document.getElementById('textDisplay');
     if (textDisplay) {
@@ -234,8 +239,8 @@ function updateTextDisplay() {
 
 
 
-function simulateBackspace() { // 딸깍+bbb = 딸ㄱ 이어야함. 딹 으로 변함?. 딸ㄱ 으로 변하게 수정필요, 바+화살표+ㄱ=바ㄱ 으로 표시되어야함.
-    console.log("simulateBackspace2 starting");
+function backspaceClicked() { // 딸깍+bbb = 딸ㄱ 이어야함. 딹 으로 변함?. 딸ㄱ 으로 변하게 수정필요, 바+화살표+ㄱ=바ㄱ 으로 표시되어야함.
+    console.log("backspaceClicked2 starting");
     const textDisplay = document.getElementById('textDisplay');
     var text = textDisplay.textContent;
     console.log("text", text);
@@ -319,53 +324,81 @@ function simulateBackspace() { // 딸깍+bbb = 딸ㄱ 이어야함. 딹 으로 �
     textBox.dispatchEvent(new Event('input'));
 }
 
-function simulateEnter(){
+function enterClicked(){
     checkTextMatch();
 }
 
-function simulateCapslock(newLanguage) {
-    var newLang = newLanguage;
-    var koreanRadio = document.getElementById('korean');
-    var germanRadio= document.getElementById('german');
-    var koreanShiftedRadio = document.getElementById('koreanShifted');
-    var germanShiftedRadio= document.getElementById('germanShifted');
+function radioButtonChanged(event) { 
+    const selectedLayout = event.target.id;
+    console.log('selectedLayout', selectedLayout);
 
-    if(newLang == 'korean') { // from here triggered by radio button
-        console.log("koreanRadioTriggered.")
-        document.getElementById('capslock-light').style.cssText = 'color:rgb(4, 255, 0); text-shadow: 0 0 1px #000000, 0 0 3px #73ff00;';
-        koreanRadio.checked = true;
-        capslockOn = true;
-    } else if (newLang == 'german') {
-        document.getElementById('capslock-light').style.cssText = '';
-        germanRadio.checked = true;
-        capslockOn = false;
-    } else if (newLang == 'germanShifted') {
-        germanShifted.checked = true;
-        document.getElementById('capslock-light').style.cssText = '';
-        capslockOn = false;
+    if (selectedLayout === 'original') {
+        changeKeyboardToOriginal(keyboardLayouts[selectedLayout]);
+    } else {
+        selectedLanguage = selectedLayout;
+        const layout = keyboardLayouts[selectedLayout];
+        changeKeyboard(layout);
 
-    } else if (newLang == 'koreanShifted') {
-        document.getElementById('capslock-light').style.cssText = 'color:rgb(4, 255, 0); text-shadow: 0 0 1px #000000, 0 0 3px #73ff00;';
-        koreanShiftedRadio.checked = true;
-        capslockOn = true;
-    } else { // from here tiggered by capsLock
-        if (capslockOn) {
-            document.getElementById('capslock-light').style.cssText = '';
-            koreanRadio.checked = false;
-            germanRadio.checked = true;
-            capslockOn = false;
-    
+        if (selectedLayout === 'german' || selectedLayout === 'germanShifted') {
+            toggleTabslock('off');
         } else {
-            document.getElementById('capslock-light').style.cssText = 'color:rgb(4, 255, 0); text-shadow: 0 0 1px #000000, 0 0 3px #73ff00;';
-            koreanRadio.checked = true;
-            germanRadio.checked = false;
-            capslockOn = true;
+            toggleTabslock('on');
         }
     }
+
 }
 
+function capslockClicked() {
+    var originalRadio= document.getElementById('original');
+    var germanRadio = document.getElementById('german');
+    var germanShiftedRadio = document.getElementById('germanShifted');
+    var koreanRadio = document.getElementById('korean');
+    var koreanShiftedRadio = document.getElementById('koreanShifted');
+    
+    if(capslockOn == true) {
+        toggleTabslock('off');
+        if(selectedLanguage == 'korean') {
+            selectedLanguage = 'german';
+            if (!originalRadio.checked) {
+                germanRadio.checked = true;
+                germanRadio.dispatchEvent(new Event('change'));
+            }
+        } else if (selectedLanguage == 'koreanShifted') {
+            selectedLanguage = 'germanShifted';
+            if (!originalRadio.checked) {
+                germanShiftedRadio.checked = true; 
+                germanShiftedRadio.dispatchEvent(new Event('change'));
+            }
+        }
+    } else {
+        toggleTabslock('on');
+        if (selectedLanguage == 'german') {
+            selectedLanguage = 'korean';
+            if (!originalRadio.checked) {
+                koreanRadio.checked = true;
+                koreanRadio.dispatchEvent(new Event('change'));
+            }
+        } else if (selectedLanguage == 'germanShifted') {
+            selectedLanguage = 'koreanShifted';
+            if (!originalRadio.checked) {
+                koreanShiftedRadio.checked = true;
+                koreanShiftedRadio.dispatchEvent(new Event('change'));
+            }
+        }
+     } 
+}
 
-console.log('Script loaded successfully end');
+function toggleTabslock(on) {
+    var onOff = on; 
+    var capslock = document.getElementById('capslock-light')
+    if (onOff == 'on') {
+        capslock.classList.add("capslock-light-on");
+        capslockOn = true;
+    } else {
+        capslock.classList.remove("capslock-light-on");
+        capslockOn = false;
+    }
+}
 
 function checkTextMatch(){
     const inputText = document.getElementById('textDisplay').textContent;

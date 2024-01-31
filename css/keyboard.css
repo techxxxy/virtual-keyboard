@@ -77,6 +77,8 @@ ul.number-keys {
 .keyboard .right      { border-bottom-right-radius: 20px; }
 .keyboard .command    { width: 79px;}
 
+.capslock-light-on {color:rgb(4, 255, 0); text-shadow: 0 0 1px #000000, 0 0 3px #73ff00;} /* will be added this class by javacrpt */
+
 .keyboard li:active, .keydown, ul.printable li:not([class]):active {
     background: radial-gradient(at 40% 1%, #c4c4c4 5%, rgb(216, 217, 214) 70%);
     border: solid 1px #8e8e8e;
