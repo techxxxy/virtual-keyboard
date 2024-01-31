@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banana Game</title>
+  <style>
+    #banana {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div id="banana">
+    <img src="./img/banana.png" alt="banana" width="50" height="50">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const banana = document.getElementById('banana');
+      const bananaHeight = banana.offsetHeight;
+      const windowHeight = window.innerHeight;
+
+      let bananaInterval = setInterval(function() {
+        const bananaPosition = banana.getBoundingClientRect().top;
+        if (bananaPosition + bananaHeight >= windowHeight) {
+          clearInterval(bananaInterval);
+          alert('Game over!');
+        }
+        banana.style.top = bananaPosition + 1 + 'px'; // Adjust speed here
+      }, 10);
+
+      document.addEventListener('keydown', function(event) {
+        console.log(event.key);
+        const keyName = event.key.toLowerCase();
+        console.log("keyName", keyName);
+
+        const bananaPosition = banana.getBoundingClientRect().top;
+        if (keyName === 'b' && bananaPosition + bananaHeight <= windowHeight) {
+            console.log("keyName", keyName);
+          alert('You caught the banana!');
+          clearInterval(bananaInterval);
+        }
+
+
+        // if (keyName === 'b' && banana.getBoundingClientRect().top + bananaHeight >= windowHeight) {
+        //     console.log("keyName", keyName);
+        //   alert('You caught the banana!');
+        //   clearInterval(bananaInterval);
+        // }
+      });
+    });
+  </script>
+</body>
+</html>

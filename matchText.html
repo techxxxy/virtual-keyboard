@@ -9,7 +9,8 @@
 </head>
 <body>
     <div>
-        <p id="vocaburary">바나나</p>
+        <p id="target-vocaburary">바나나</p>
+        <p id="textDisplay">바나나</p>
         <input type="text" id="practiceInput" placeholder="Type here and press Enter">
     </div>
 
@@ -17,10 +18,15 @@
         //when keyup is used instead of keypress, isComposing===false check is required for korean
         document.getElementById('practiceInput').addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
-                var inputText = document.getElementById('practiceInput').value.trim();
-                var textElement = document.getElementById('vocaburary');
 
-                if (inputText === '바나나') {
+                var inputText = document.getElementById('practiceInput').value.trim();
+
+                console.log("inputText", inputText);
+                var targetText = document.getElementById('target-vocaburary').innerText.trim();
+                var textElement = document.getElementById('target-vocaburary');
+
+                
+                if (inputText === targetText) {
                     textElement.style.color = 'green';
                 } else {
                     textElement.style.color = 'red';

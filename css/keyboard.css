@@ -1,176 +1,162 @@
-.keyboard{
-    -webkit-transform: perspective(28.4cm) rotateX(20deg);
-    border: 1px solid rgb(174, 174, 174);
-    border-radius: 1cm;
+
+div.kayboard-container {
+    transform: scale(0.8, 0.8); /* here you can resize the whole keyboard  */
+    margin: -40px 0 0 0px; /*when transformed, margine needs to be adjusted too */
+    min-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    font-size: 20px;
+    border: #33333314 1px solid;
+
+}
+
+.keyboard {
+    font-family: Arial, Helvetica, sans-serif, "Arial Rounded";
+    transform: perspective(1080px) rotateX(20deg);
+    border: 1px solid rgb(231, 231, 231);
+    border-radius: 40px;
     margin: 20px;
-    width: 28.4cm;
-    height: 11.6cm;
-    /* background-image: url("./img/apple-ko-27_9-11_49.png"); */
-    background-repeat: no-repeat;
-    background: #bbb;
+    width: 1075px;
+    height: 436px;
+    background: #bec4c6;
     /* not selectable text */
-    -moz-user-select: -moz-none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: default;
+    -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; -ms-user-select: none; user-select: none; cursor: default;
 
-    background-image: -webkit-gradient(
-        linear,
-        left top,
-        right bottom,
-        color-stop(0.27, rgb(212,216,219)),
-        color-stop(0.64, rgb(213,217,220)),
-        color-stop(0.95, rgb(230,233,235)),
-        color-stop(1, rgb(191,191,191))
-    );
+    background-image: -webkit-gradient( linear, left top, right bottom, color-stop(0.03, #ededed), color-stop(0.08, #ffffff), color-stop(0.30, #dbdbdb), color-stop(0.64, #bdbcbc), color-stop(0.95, #606060a5), color-stop(1,#464646a5) ); 
+    -webkit-box-shadow: inset 0px 0px 1px #d3d3d3, 0 1px 0 #807f7f, 0px -1px 0px #b6b6b6, -1px 0px 0px #b6b6b6, 10px -5px 20px #e0e0e0, 0 4px 0 #878787, 0 15px 20px #9d9d9d;
+    -moz-box-shadow: inset 0px 0px 1px #d3d3d3, 0 1px 0 #807f7f, 0px -1px 0px #b6b6b6, -1px 0px 0px #b6b6b6, 10px -5px 20px #e0e0e0, 0 4px 0 #878787, 0 15px 20px #9d9d9d;
+    box-shadow: inset 0px 0px 1px #d3d3d3, 0 1px 0 #807f7f, 0px -1px 0px #b6b6b6, -1px 0px 0px #b6b6b6, 10px -5px 20px #0000002d, 0 4px 0 #878787, 0 15px 20px #00000068;
+}
 
-    -webkit-box-shadow:  
-        inset 0 0 8px #bbb,
-        0 1px 0 #aaa,
-        0 4px 0 #bbb,
-        0 10px 30px #ddd;
-    -moz-box-shadow:  
-        inset 0 0 8px #bbb,
-        0 1px 0 #aaa,
-        0 4px 0 #bbb,
-        0 10px 30px #ddd;
-    box-shadow:  
-        inset 0 0 8px #bbb,
-        0 1px 0 #aaa,
-        0 4px 0 #bbb,
-        0 10px 30px #ddd;
-    }
-
-ul {
+.keyboard ul {
     border: solid 1px transparent;
     list-style-type: none;
-    margin:0.30cm 0cm 0cm 0.3cm;
+    margin: 12px 0px 0px 12px;
     padding: 0;
-    height: 1.53cm;
-    line-height: 1.53cm;
+    height: 56px;
+    line-height: 56px;
 }
 
-li {
-    border: solid 1px rgb(255, 255, 255);
-    border-radius: 0.15cm;
-    background: #ffffff;
-    color: #82847f;
+ul.number-keys {
+    margin-top: 14px;
+}
+
+.keyboard li {
+    border: solid 1px rgb(153, 153, 153); 
+    border-radius: 6px;
+    background: #eaeaea;
     float: left;
-    width: 1.6cm;
-    margin-right:0.28cm;
+    width: 61px;
+    height: 57px;
+    margin: 0 12px 0 0;
     text-align: center;
-    text-shadow: 0 0.3cm 0.4cm rgb(255, 255, 255), 1px 1px 1px rgb(252, 252, 252);
+    color: #82847f;
+    font-size: 20px;
+    text-shadow: 0 12px 12px rgb(255, 255, 255), 1px 1px 1px rgb(252, 252, 252);
 
-    -webkit-box-shadow: 
-		inset 0 0 25px #e8e8e8,
-		0 1px 0 #c3c3c3,
-		0 2px 0 #c9c9c9,
-		0 2px 3px #333;
-	-moz-box-shadow: 
-		inset 0 0 25px #e8e8e8,
-		0 1px 0 #c3c3c3,
-		0 2px 0 #c9c9c9,
-		0 2px 3px #333;
-	box-shadow: 
-		inset 0 0 25px #e8e8e8,
-		0 1px 0 #c3c3c3,
-		0 2px 0 #c9c9c9,
-		0 2px 3px #333;
-
+    -webkit-box-shadow: inset 0 0 25px #ffffff,  0 2px 0 #6c6c6c, 1px 3px 0 #484848, 0 2px 0 #c9c9c9, 0 2px 3px #333;
+    -moz-box-shadow: inset 0 0 25px #ffffff,  0 2px 0 #6c6c6c, 1px 3px 0 #484848, 0 2px 0 #c9c9c9, 0 2px 3px #333;
+    box-shadow: inset 0 0 25px #ffffff,  0 2px 0 #6c6c6c, 1px 3px 0 #484848, 0 2px 0 #c9c9c9, 0 2px 3px #333;
 }
 
-ul.overlay li {
-    background: #ffffff00;
-    box-shadow: none;
-    border: solid 1px rgba(255, 255, 255, 0);
-    text-align: left;
-    color: rgb(112, 112, 112);
-    
+/* li style: special keys including space bar, esc  */
+.keyboard .esc        { width: 97px; border-top-left-radius: 26px; }
+.keyboard .tab        { width: 97px; }
+.keyboard .fnLast     { border-top-right-radius: 26px; }
+.keyboard .last-key       { margin-right: 0; }
+.keyboard .backspace-key  { width: 97px; }
+.keyboard .capsLock   { width: 115px; }
+.keyboard .enter-key      { width: 114px; }
+.keyboard .shift      { width: 79px; }
+.keyboard .right-shift { width: 150px; }
+.keyboard .lang       { border-bottom-left-radius: 24px;}
+.keyboard .space-bar   { width: 351px; }
+.keyboard .right      { border-bottom-right-radius: 20px; }
+.keyboard .command    { width: 79px;}
+
+.keyboard li:active, .keydown, ul.printable li:not([class]):active {
+    background: radial-gradient(at 40% 1%, #c4c4c4 5%, rgb(216, 217, 214) 70%);
+    border: solid 1px #8e8e8e;
+    margin: 2px 12px 0 0;
+    color: #888;
+    -webkit-box-shadow: inset 0 -1px 0px #f4f4f4, 0 1px 3px #333, 0 -1px 1px #363636, 0 1px 1px #494949;
+    -moz-box-shadow: inset 0 -1px 0px #f4f4f4, 0 1px 3px #333, 0 -1px 1px #363636, 0 1px 1px #494949;
+    box-shadow: inset 0 -1px 0px #f4f4f4, 0 1px 3px #333, 0 -1px 1px #363636, 0 1px 1px #494949;
 }
 
-ul.overlay {
-    margin-top:0.29cm;    
+/* printable key has a groov */
+.keyboard ul.printable li:not([class]) {
+    background: radial-gradient(at 40% 1%, rgb(213, 213, 213) 5%, #ffffff 70%);
 }
-
-ul.number, .qwe, .asd, .yxc, .control{
-    margin-top:0.29cm;
-}
-
-
-/* printable key has a  */
-ul.printable li:not([class]) {
-    background: radial-gradient(at 40% 1%, rgb(224, 224, 224) 5%, #ffffff 70%);
-  }
 
 ul.printable li:active:not([class]) {
-    background: radial-gradient(at 40% 1%, rgb(209, 209, 209) 5%, #ebeced 70%);
-  }
-
-li:active, .keydown {
-	background: #ebeced;
-    border: solid 1px rgb(212, 212, 212);
-	color: #888;
-	margin: 0.05cm 0.28cm 0cm 0cm;
-	-webkit-box-shadow:
-		inset 0 0 25px #ddd,
-		0 0 3px #333;
-	-moz-box-shadow: 
-		inset 0 0 25px #ddd,
-		0 0 3px #333;
-	box-shadow: 
-		inset 0 0 25px #ddd,
-		0 0 3px #333;
-	border-top: 1px solid #eee;}
-
-
-
-.esc {
-    width: 2.56cm;
-    border-top-left-radius: 0.7cm;
-}
-.tab {
-    width: 2.58cm;
+    background: radial-gradient(at 40% 1%, rgb(214, 217, 214) 5%, #ebeced 70%);
 }
 
-.fnLast{
-    border-top-right-radius: 0.7cm;
+li > div div{
+    border: solid 1px rgba(0, 0, 0, 0);
+    font-size: 18px;
+    margin: 0px;
 }
 
-.last{
-    margin-right:0;
-}
-.backspace{
-    width: 2.58cm;
-}
-.capLock{
-    width: 3.05cm;
-}
-.enter{
-    width: 3.05cm;
-}
+.aType { display: grid; grid-template-columns: repeat(1, 1fr); }
+.qType { display: grid; grid-template-columns: repeat(2, 1fr); }
+/* Y, X... is located in top right on a key */ 
+.de1 { line-height: 20px; text-align: right; padding-right: 8px; padding-top: 4px; margin-top: 4px }
+ /* ㅋ, ㅌ,... is located in bottom left on a key */ 
+.ko1 {line-height: 12px; margin-top: 8px; vertical-align: middle; text-align: left; padding-left: 6px; }
+ /* ㅕ,ㅑ, ㅐ, needs to shift to the left */ 
+.vowel {padding-left: 4px; margin-top: 4px; }
+/* ㅃ, ㅂ, ㅉ, ㅈ is located in left on a key */
+.ko2 { margin-top: 4px; padding-left: 4px; width: 20px; line-height: 20px; vertical-align: bottom; }
+ /* Y, X... is located in top right on a key */
+.qType .de1 { width: 24px; }
 
-.shift{
-    width: 2.1cm;
-}
-.rightShift{
-    width: 4cm;
-}
-.lang{
-    border-bottom-left-radius: 0.7cm;
-}
-.command{
-    width: 2.1cm;
-    font-size: 0.35cm;
-    padding:0;
-    vertical-align:text-bottom;
-}
-.spaceBar{
-    width: 9.3cm;
-}
-.right{
-    border-bottom-right-radius: 0.7cm;
-}
+ /* Fn key Group: two symbols are located in vertically */
+li.esc>div { font-size: 14px; line-height: 12px; margin-top: 40px; margin-left: 12px; text-align: left; }
+ul.function-keys > li > div { display: grid; grid-template-columns: repeat(1, 1fr); }
+.symbol { height:24px; line-height:24px; text-align: center; margin-top: 8px; }
+.fn { font-size: 12px; line-height: 24px; text-align: center; }
+
+/* eject key on top*/
+div.eject {line-height: 12px; margin-top: 16px;  }
+
+/* Number key group: two symbols are located in vertically */
+ul.number-keys > li > div { display: grid; grid-template-columns: repeat(1, 1fr); }
+.upper-part {margin-top: 16px; line-height: 1px; text-align: center;}
+.lower-part {margin-top: 12px; line-height: 18px; text-align: center;}
+
+li.backspace-key>div { line-height: 12px; margin-top: 32px; margin-left: 58px; }
+li.tab > div { line-height: 12px; margin-top: 34px; margin-right: 60px; }
+
+li.capsLock > div { display: grid; grid-template-columns: repeat(1, 1fr); }
+li.capsLock div.upper-part{ margin-right:90px; margin-top: 12px; line-height: 4px; }
+li.capsLock div.lower-part {font-size: 14px; letter-spacing: 1px; margin-top:16px; margin-right: 63px; }
 
 
+li.enter div { margin: 20px 0 0 80px; }
+li.shift div { line-height: 2px; margin-right:44px; margin-top: 32px; }
+li.shift span { transform: scale(1.1, 0.8); }
+li.right-shift div{ line-height: 2px; margin-left:120px; margin-top: 32px; }
+li.right-shift span { transform: scale(1.1, 0.8); }
+
+ul.control-keys li div{ line-height: 30px; height: 30px; font-size: 14px; }
+ul.control-keys span{ transform: scale(0.8, 0.8);}
+
+.control, .option, .commandL,.language {text-align: right; margin-right:4px; margin-top: 4px;}
+.language {margin-right:8px; margin-top: 1px; text-align: right;}
+li.lang :not(.language) {margin-right:12px}
+.commandR, .right-option {text-align: left; margin-left:4px; margin-top: 4px;}
+ul.control-keys li div.arrow {line-height: 25px; height:25px; margin-top:16px;}
+
+ul.control-keys { position:relative;}
+li.upArrow { position:absolute; left:912px; line-height: 26px; height:26px;
+border-radius: 6px 6px 0 0;
+}
+li.downArrow { position:absolute; left:912px; top: 33px; 
+    border-radius: 0 0 6px 6px;
+    line-height: 26px; height:26px; }
+li.right { position:absolute; left:985px;}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This provides a realistic visual representation of keyboard layouts for both Korean and German languages, allowing users to understand and familiarize themselves with the arrangement of characters and symbols on the keyboard. It is implemented using 100% CSS and HTML without images.">
+    <meta name="keywords" content="aple, mac, keyboard, pure, HTML, CSS, korean, german, hangul, layout">
+    <meta name="author" content="techxxxy">
+    <link rel="stylesheet" href="./css/icons.css">  <!-- Google Material Symbols https://fonts.google.com/icons -->
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/keyboard.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <script src="js/inputCompositLetter.js" defer></script>
+    <script src="js/hangul.js" defer></script>
+    <title>input vocaburary</title>
+</head>
+<body>
+    <div class="body-container">
+
+        <div class="typing-practice">
+            <p id="target-vocaburary" class="text-center"></p>
+            <p id="textDisplay" class="text-center"></p>
+        </div>
+        <div class="language-change-group"> <!-- Radio button design, bootstrap design part -->
+            <input type="radio" class="btn-check" name="keyboardLayout" id="original" autocomplete="off" checked>
+            <label class="btn btn-outline-secondary" for="original" value="original">Original</label>
+
+            <input type="radio" class="btn-check" name="keyboardLayout" id="german" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="german" value="german">Deutsch</label>
+    
+            <input type="radio" class="btn-check" name="keyboardLayout" id="germanShifted" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="germanShifted" value="germanShifted">Shift + Detusch</label>
+    
+            <input type="radio" class="btn-check" name="keyboardLayout" id="korean" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="korean" value="korean">한글</label>
+    
+            <input type="radio" class="btn-check" name="keyboardLayout" id="koreanShifted" autocomplete="off">
+            <label class="btn btn-outline-secondary" for="koreanShifted" value="koreanShifted">Shift + 한글</label>
+        </div>
+
+
+        <div class="kayboard-container"> <!-- Removing this <div> element may cause the <li> items to overflow outside of the keyboard shape. -->
+            <div class="keyboard">
+                <ul class="funtion-keys">
+                    <li class="esc"><div>esc</div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined"> flare </span></div><div class="fn">F1 </div></div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined"> wb_sunny </span></div><div class="fn">F2 </div></div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined"> view_module </span>   </div><div class="fn">F3 </div></div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined">search</span>  </div><div class="fn">F4 </div></div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined">mic</span>  </div><div class="fn">F5 </div></div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined"> dark_mode </span></div><div class="fn">F6 </div></div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined"> skip_previous </span></div><div class="fn">F7 </div></div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined"> play_pause </span> </div><div class="fn">F8 </div></div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined"> skip_next </span> </div><div class="fn">F9 </div></div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined"> volume_mute </span>  </div><div class="fn">F10</div></div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined"> volume_down </span> </div><div class="fn">F11</div></div></li>
+                    <li><div><div class="symbol"><span class="material-symbols-outlined"> volume_up </span>  </div><div class="fn">F12</div></div></li>
+                    <li class="fnLast last-key"> <div class="eject"><span class="material-symbols-outlined">eject</span></div></li>
+                </ul>
+                <ul class="number-keys printable">
+                    <li id="key-0" class="typing-key">  <div class="upper-part key-value">°</div> <div class="lower-part key-value">§ </div> </li>
+                    <li id="key-1" class="typing-key">  <div class="upper-part key-value">+         </div> <div class="lower-part key-value">1      </div> </li>
+                    <li id="key-2" class="typing-key">  <div class="upper-part key-value">&quot;    </div> <div class="lower-part key-value">2      </div> </li>
+                    <li id="key-3" class="typing-key">  <div class="upper-part key-value">&ast;     </div> <div class="lower-part key-value">3      </div> </li>
+                    <li id="key-4" class="typing-key"> <div class="upper-part key-value">ç         </div> <div class="lower-part key-value">4      </div> </li>
+                    <li id="key-5" class="typing-key"> <div class="upper-part key-value">&percnt;  </div> <div class="lower-part key-value">5      </div> </li>
+                    <li id="key-6" class="typing-key"> <div class="upper-part key-value">&amp;     </div> <div class="lower-part key-value">6      </div> </li>
+                    <li id="key-7" class="typing-key"> <div class="upper-part key-value">&sol;     </div> <div class="lower-part key-value">7      </div> </li>
+                    <li id="key-8" class="typing-key"> <div class="upper-part key-value">&lpar;    </div> <div class="lower-part key-value">8     </div> </li>
+                    <li id="key-9" class="typing-key"> <div class="upper-part key-value">&rpar;    </div> <div class="lower-part key-value">9      </div> </li>
+                    <li id="key-10"class="typing-key"> <div class="upper-part key-value">=         </div> <div class="lower-part key-value">0       </div> </li>
+                    <li id="key-11"class="typing-key"> <div class="upper-part key-value">&quest;   </div> <div class="lower-part key-value">&apos; </div>  </li>
+                    <li id="key-12" class="typing-key"> <div class="upper-part key-value">&grave;   </div> <div class="lower-part key-value">&Hat;  </div>  </li>
+                    <li id="backspace" class="backspace-key last-key"><div><span class="material-symbols-outlined"> backspace </span></div></li>
+                </ul>
+                <ul class="alpabets-qwe printable">
+                    <li class="tab"><div><span class="material-symbols-outlined"> keyboard_tab </span></div></li>
+                    <li id="key-13" class="typing-key"> <div class="qType"> <div class="ko2 key-value">ㅃ    </div> <div class="de1 key-value">Q       </div> <div class="ko2">ㅂ</div> </div> </li>
+                    <li id="key-14" class="typing-key"> <div class="qType"> <div class="ko2 key-value">ㅉ    </div> <div class="de1 key-value">W       </div> <div class="ko2">ㅈ</div> </div> </li>
+                    <li id="key-15" class="typing-key"> <div class="qType"> <div class="ko2 key-value">ㄸ    </div> <div class="de1 key-value">E       </div> <div class="ko2">ㄷ</div> </div> </li>
+                    <li id="key-16" class="typing-key"> <div class="qType"> <div class="ko2 key-value">ㄲ    </div> <div class="de1 key-value">R       </div> <div class="ko2">ㄱ</div> </div> </li>
+                    <li id="key-17" class="typing-key"> <div class="qType"> <div class="ko2 key-value">ㅆ    </div> <div class="de1 key-value">T       </div> <div class="ko2">ㅅ</div> </div> </li>
+                    <li id="key-18" class="typing-key"> <div class="aType"> <div class="de1 key-value">Z    </div> <div class="ko1 key-value">ㅛ       </div> </div> </li>
+                    <li id="key-19" class="typing-key"> <div class="aType"> <div class="de1 key-value">U    </div> <div class="ko1 vowel key-value">ㅕ </div> </div> </li>
+                    <li id="key-20" class="typing-key"> <div class="aType"> <div class="de1 key-value">I    </div> <div class="ko1 vowel key-value">ㅑ </div> </div> </li>
+                    <li id="key-21" class="typing-key"> <div class="qType"> <div class="ko2 key-value">ㅒ    </div> <div class="de1 key-value">O       </div> <div class="ko2">ㅐ</div> </div> </li>
+                    <li id="key-22" class="typing-key"> <div class="qType"> <div class="ko2 key-value">ㅖ    </div> <div class="de1 key-value">P       </div> <div class="ko2">ㅔ</div> </div> </li>
+                    <li id="key-23" class="typing-key">é &nbsp&nbsp ö</li>
+                    <li id="key-24" class="typing-key"> <div class="upper-part key-value">&excl;</div> <div class="lower-part key-value">&quot;</div> </li>
+                    <li id="key-25" class="typing-key last-key"> <div class="upper-part key-value">£</div> <div class="lower-part key-value">$</div> </li>
+                </ul>
+                <ul class="alpabets-asd printable">
+                    <li id="capslock" class="capsLock"><div><div id="capslock-light" class="upper-part">&#x2022;</div> <div class="lower-part">한/A</div></div></li>
+                    <li id="key-26" class="typing-key"> <div class="aType"> <div class="de1 key-value">A</div> <div class="ko1 key-value">ㅁ</div> </div> </li>
+                    <li id="key-27" class="typing-key"> <div class="aType"> <div class="de1 key-value">S</div> <div class="ko1 key-value">ㄴ</div> </div> </li>
+                    <li id="key-28" class="typing-key"> <div class="aType"> <div class="de1 key-value">D</div> <div class="ko1 key-value">ㅇ</div> </div> </li>
+                    <li id="key-29" class="typing-key"> <div class="aType"> <div class="de1 key-value">F</div> <div class="ko1 key-value">ㄹ</div> </div> </li>
+                    <li id="key-30" class="typing-key"> <div class="aType"> <div class="de1 key-value">G</div> <div class="ko1 key-value">ㅎ</div> </div> </li>
+                    <li id="key-31" class="typing-key"> <div class="aType"> <div class="de1 key-value">H</div> <div class="ko1 key-value">ㅗ</div> </div> </li>
+                    <li id="key-32" class="typing-key"> <div class="aType"> <div class="de1 key-value">J</div> <div class="ko1 vowel key-value">ㅓ</div> </div> </li>
+                    <li id="key-33" class="typing-key"> <div class="aType"> <div class="de1 key-value">K</div> <div class="ko1 vowel key-value">ㅏ</div> </div> </li>
+                    <li id="key-34" class="typing-key"> <div class="aType"> <div class="de1 key-value">L</div> <div class="ko1 vowel key-value">ㅣ</div> </div> </li>
+                    <li id="key-35" class="typing-key"><div class="key-value">é &nbsp;&nbsp; ö</div></li>
+                    <li id="key-36" class="typing-key"><div class="key-value">à &nbsp;&nbsp; ä</div></li>
+                    <li class="enter-key last-key" id="enter"><div><span class="material-symbols-outlined"> keyboard_return </span></div></li>
+                </ul>
+                <ul class="alpabets-yxc printable">
+                    <li class="shift"><div><span class="material-symbols-outlined"> shift </span></div></li>
+                    <li id="key-37" class="typing-key">&lt;</li>
+                    <li id="key-38" class="typing-key"> <div class="aType"> <div class="de1 key-value">Y</div> <div class="ko1 key-value">ㅋ</div> </div> </li>
+                    <li id="key-39" class="typing-key"> <div class="aType"> <div class="de1 key-value">X</div> <div class="ko1 key-value">ㅌ</div> </div> </li>
+                    <li id="key-40" class="typing-key"> <div class="aType"> <div class="de1 key-value">C</div> <div class="ko1 key-value">ㅊ</div> </div> </li>
+                    <li id="key-41" class="typing-key"> <div class="aType"> <div class="de1 key-value">V</div> <div class="ko1 key-value">ㅍ</div> </div> </li>
+                    <li id="key-42" class="typing-key"> <div class="aType"> <div class="de1 key-value">B</div> <div class="ko1 key-value">ㅠ</div> </div> </li>
+                    <li id="key-43" class="typing-key"> <div class="aType"> <div class="de1 key-value">N</div> <div class="ko1 key-value">ㅜ</div> </div> </li>
+                    <li id="key-44" class="typing-key"> <div class="aType"> <div class="de1 key-value">M</div> <div class="ko1 key-value">ㅡ</div> </div> </li>
+                    <li id="key-45" class="typing-key"><div class="upper-part key-value">&#x3b;</div> <div class="lower-part key-value">,</div> </li>
+                    <li id="key-46" class="typing-key"> <div class="upper-part key-value">:</div> <div class="lower-part key-value">.</div> </li>
+                    <li id="key-47" class="typing-key"> <div class="upper-partkey-value">&horbar;</div> <div class="lower-part key-value">-</div> </li>
+                    <li class="right-shift last-key"><div><span class="material-symbols-outlined"> shift </span></div></li>
+                </ul>
+                <ul class="control-keys">
+                    <li class="lang"><div class="language">fn</div><div><span class="material-symbols-outlined">language</span></div></li>
+                    <li><div class="control"><span class="material-symbols-outlined"> keyboard_control_key </span></div><div>control </div></li>
+                    <li><div class="option"> <span class="material-symbols-outlined"> keyboard_option_key </span></div><div>option</div></li>
+                    <li class="command"><div class="commandL"><span class="material-symbols-outlined"> keyboard_command_key </span></div><div>command</div></li>
+                    <li id="key-48" class="typing-key space-bar">&nbsp</li>
+                    <li class="command"><div class="commandR"><span class="material-symbols-outlined"> keyboard_command_key </span></div> <div>command</div></li>
+                    <li><div class="right-option"><span class="material-symbols-outlined"> keyboard_option_key </span></div><div>opion</div></li>
+                    <li><div class="arrow"><span class="material-symbols-outlined"> arrow_left </span></div></li>
+                    <li class="upArrow"><span class="material-symbols-outlined"> arrow_drop_up </span></li>
+                    <li class="downArrow"><span class="material-symbols-outlined">arrow_drop_down</span></li>               
+                    <li class="right last-key"><div class="arrow"><span class="material-symbols-outlined">arrow_right </span></div></li>
+                </ul>
+             </div>
+        </div>
+
+
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Input text here</span>
+            <input type="text" id="textBox" autofocus class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default">
+        </div>
+    </div>
+
+
+</body>
+</html>

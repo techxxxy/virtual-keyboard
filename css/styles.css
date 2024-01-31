@@ -1,26 +1,51 @@
 body {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    width: 100%;
+    /* or any desired width */
     height: 100vh;
     margin: 0;
-    font-family: keyboard, "Arial Rounded", Helvetica, Arial, sans-serif;
+    color: #333;
+    margin: 0px;
+    padding: 0px;
+
+    overflow-x: auto;
+    /* Enable horizontal scrolling */
+
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
+.body-container {
+    margin: 20px 20px 20px 20px;
+    border: #33333314 1px solid;
 }
 
-input [type="text"] {
-    width: 20vh;
+.typing-practice input {
+    width: 300px;
 }
 
-#vocaburary {
-    transition: color 0.5s;
+div.language-change-group {
+    margin: 20px 0px 10px 0px;
+}
+
+#textDisplay {
+    line-height: 30px;
+    height: 30px;
+    font-size: 20px;
+
+}
+
+p {
+    margin: 8px 0 0 0;
+    max-width: 1073;
 }
 
 
-#practiceInput {
-    color: blue; /* Color for the displayed input text */
+#target-vocaburary {
+    font-size: 60px;
+    height:60px;
+    line-height: 60px;
+    text-align: center;
+    height: 60px;
+    color: chocolate;
 }

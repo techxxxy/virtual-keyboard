@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index.html Virtual Keyboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #keyboard {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 5px;
+        }
+
+        .key {
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #ccc;
+        }
+
+        #textbox {
+            margin-top: 20px;
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        #languageSwitch {
+            margin-top: 10px;
+            cursor: pointer;
+            padding: 5px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="keyboard"></div>
+<input type="text" id="textbox" readonly>
+<button id="languageSwitch">한글</button>
+
+<script>
+// Variable to track the current keyboard layout (Korean or German)
+let isKoreanLayout = false;
+
+// Object containing keyboard layouts for Korean and German
+const keyboardLayouts = {
+    german: [
+        '1234567890\'^',
+        'QWERTZUIOPü¨$',
+        'ASDFGHJKLöä',
+        'YXCVBNM,.-'
+    ],
+    korean: [
+        '1234567890-=',
+        'ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ[]\\',
+        'ㅁㄴㅇㄹㅎㅗㅓㅏㅣ;\'',
+        'ㅋㅌㅊㅍㅠㅜㅡ,./'
+    ],
+    german2: [
+        {label: 1, id: 1, class:''}, {label: 1, id: 1, class:''},{label: 1, id: 1, class:''},{label: 'capslock', id: 1, class:'double-width'},{label: 1, id: 1, class:''},{label: 1, id: 1, class:''}, {},
+        'ㅂㅈㄷㄱㅅㅛㅕㅑㅐㅔ[]\\',
+        'ㅁㄴㅇㄹㅎㅗㅓㅏㅣ;\'',
+        'ㅋㅌㅊㅍㅠㅜㅡ,./'
+    ],
+};
+
+// DOM elements
+const keyboardContainer = document.getElementById('keyboard');
+const textbox = document.getElementById('textbox');
+const languageSwitchButton = document.getElementById('languageSwitch');
+
+// Function to create the virtual keyboard based on the layout
+function createKeyboard(layout) {
+    keyboardContainer.innerHTML = '';
+
+    layout.forEach(row => {
+        row.split('').forEach(key => {
+            
+            // Create a div element for each key in the layout
+            const keyElement = document.createElement('div');
+            keyElement.classList.add('key');
+            keyElement.textContent = key;
+            // Add click event listener to append key to the textbox
+            keyElement.addEventListener('click', () => appendToTextbox(key));
+            // Append the key element to the keyboard container
+            keyboardContainer.appendChild(keyElement);
+            console.log("What is key: ",key);
+        });
+        console.log("What ist row: ",row );
+    });
+}
+
+// Function to append a character to the textbox
+function appendToTextbox(character) {
+    textbox.value += character;
+}
+
+// Event listener for language switch button
+languageSwitchButton.addEventListener('click', () => {
+    // Toggle between Korean and German layouts
+    isKoreanLayout = !isKoreanLayout;
+    // Update button text based on the current layout
+    languageSwitchButton.textContent = isKoreanLayout ? 'German' : '한글';
+    // Create the keyboard based on the selected layout
+    createKeyboard(isKoreanLayout ? keyboardLayouts.korean : keyboardLayouts.german);
+});
+
+// Initial keyboard layout (German)
+createKeyboard(keyboardLayouts.german);
+</script>
+
+</body>
+</html>
