@@ -5,6 +5,8 @@ let capslockOn = false;
 let superDelete = true;
 let selectedLanguage = 'german'; // orginal is not language, so it will be ignored
 let textDisplay; 
+let completedLetters = "";
+let composingLetter = "";
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -31,24 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setupButtonClickEvent('capslock', capslockClicked); 
 
 });
-
-function keydownedInTextBox(event){
-        if (event.key === 'Enter') {
-            if (!event.isComposing) {
-                console.log(textBox.value);
-                console.log('isComposing:', event.isComposing);
-                 checkTextMatch();
-            }
-        }
-};
-
-function setupButtonClickEvent(buttonId, handlerFunction) {
-    const button = document.getElementById(buttonId);
-    if (button) {
-        button.addEventListener('click', handlerFunction);
-    }
-}
-
 
 const keyboardLayouts = {
     germanShifted: [
@@ -120,7 +104,31 @@ const keyboardLayouts = {
 };
 
 const words = ["스위스", "banana","바나나", "파인애플", "짜파게티", "스파게티", "포도", "우유", "내일", "육계장"];
-   
+
+function allocateTextInKey(){
+}
+
+function documentKeyPressed(event) {
+    //console.log(event.keyCode);
+}
+
+function keydownedInTextBox(event){
+    if (event.key === 'Enter') {
+        if (!event.isComposing) {
+            console.log(textBox.value);
+            console.log('isComposing:', event.isComposing);
+             checkTextMatch();
+        }
+    }
+};
+
+function setupButtonClickEvent(buttonId, handlerFunction) {
+    const button = document.getElementById(buttonId);
+    if (button) {
+        button.addEventListener('click', handlerFunction);
+    }
+}
+
 function changeKeyboard(layout) {
     layout.forEach((item, index) => {
         selectedLiElements[index].textContent = item;
@@ -135,74 +143,103 @@ function changeKeyboardToOriginal(layout) {
     });
 }
 
-function isNotKorean() {
+function isNotKorean(text) {
+    var textToTest = text;
+    //console.log("textToTest ", textToTest);
     var lastLetter = textBox.value.slice(-1);
+    if (textToTest == null ) {
+        textToTest = lastLetter;
+//        console.log("!!!!!!", textToTest, "lastLetter", lastLetter );
+    }
     const koreanCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
     var isNotKorean = !koreanCheck.test(lastLetter);
     return isNotKorean;
 }
 
-function textBoxInputed() { // both keyboard and clicking trigers this function
-
-    if (textBox.value > textDisplay.textContent) {
-        superDelete = isNotKorean();
-        textDisplay.textContent = Hangul.assemble(textBox.value)
-        console.log("isNotKorea", isNotKorean(), "superDelete", superDelete );
-    } else {
-        textDisplay.textContent = textBox.value
-        console.log("isNotKorea", isNotKorean(), "superDelete", superDelete );
-    }
-//    updateTextDisplay();
-
-}
-
 function printableClicked(event) {
     const clickedLi = event.target.closest('li'); // "event.target" can be child of li like div or span.
     var index = parseInt(clickedLi.id.match(/\d+/)[0], 10); // to extract only number from id, which is key-13 format
-    var inputText = keyboardLayouts[selectedLanguage][index];
-    superDelete = isNotKorean();
-    textBox.value += inputText;
-    textBox.dispatchEvent(new Event('input')); 
-}
+    var newChar = keyboardLayouts[selectedLanguage][index];
+    console.log("newChar", newChar);
 
-function allocateTextInKey(){
-}
-
-function documentKeyPressed(event) {
-    //console.log(event.keyCode);
+    superDelete = isNotKorean(newChar);
+    textBox.value += newChar;
+    compositKorean(newChar)
+    //textBox.dispatchEvent(new Event('input')); 
 }
 
 
-// function updateTextDisplay() {
-//     if (textDisplay) {
-//         textDisplay.textContent = textBox.value;
-//         //console.log('textDisplay.textContent: ', textDisplay.textContent);
-//     }
-// }
 
+function compositKorean(newChar){
+    var newChar = newChar;
+ 
+    if (isNotKorean(newChar) == true) {
+        completedLetters = completedLetters + composingLetter + newChar; //ㄱ ㅏ ㄴ ㄴ a -> 간ㄴa
+        composingLetter ="";
+        updateText();
+    } else { // ㄱㅏㅂㅅㅏ -> 갑 & 사 
+        composingLetter += newChar;
+        console.log("composingLetter", composingLetter);
+        var assembled = Hangul.a(composingLetter);
+        console.log("assembled", assembled);
+        composingLetter = assembled;
+
+        if (assembled.length == 1) { 
+            updateText()
+        } else if (assembled.length == 2) { // 값 + ㅏ -> 갑 & 사 
+            completedLetters += assembled.slice(0, -1);
+            composingLetter = assembled.slice(-1);
+            updateText()
+        }
+    }
+  
+}
+
+function updateText() {
+    textBox.value = completedLetters + composingLetter;
+    textDisplay.textContent = completedLetters + composingLetter;
+}
+
+function textBoxInputed(event) { // both keyboard and clicking trigers this function
+    if (textBox.value > textDisplay.textContent) { // keyboard input
+        superDelete = isNotKorean();
+    } else {
+    }
+    completedLetters = textBox.value;
+    composingLetter ="";
+    textDisplay.textContent = textBox.value;
+
+    //    updateTextDisplay();
+}
 
 function backspaceClicked() { // 딸깍+bbb = 딸ㄱ 이어야함. 딹 으로 변함?. 딸ㄱ 으로 변하게 수정필요, 바+화살표+ㄱ=바ㄱ 으로 표시되어야함.
-    console.log("backspace starting");
-    var displayedText = textDisplay.textContent;
+    console.log("backspaceClicked 1");
+    var text = textDisplay.textContent;
+    console.log("backspaceClicked 2", text);
+    composingLetter = text.slice(-1);
+    completedLetters = text.slice(0, -1);
+    var newAllLetters = completedLetters + composingLetter;
+    console.log("backspaceClicked 3", completedLetters, "composingLetter", composingLetter, "newAllLetters", newAllLetters);
 
-    var lastLetter = displayedText.slice (-1);
-    var leftoverLetters = displayedText.slice(0, -1);
-    var newAllLetters = leftoverLetters + lastLetter;
-    console.log("leftoverLetters", leftoverLetters, "lastLetter", lastLetter, "newAllLetters", newAllLetters);
-
-    var lastLetterGroup = Hangul.disassemble(lastLetter);
-    console.log("lastLetterGroup",lastLetterGroup);
+    var lastLetterGroup = Hangul.disassemble(composingLetter);
+    console.log("backspaceClicked 4 lastLetterGroup",lastLetterGroup);
     // checking last letter is korean
-    console.log("isNotKorean",isNotKorean());
+    console.log("backspaceClicked 5 isNotKorean",isNotKorean());
 
     var newChar="";
-    if(displayedText.length == 0){ // test: "" + backspace
+    if(text.length == 0){ // test: "" + backspace
         return;
     } else if (isNotKorean == true || superDelete == true) { // test: "alphanumeric" + backspace
-        textBox.value = displayedText.slice(0, -1);
+        completedLetters = text.slice(0, -1);
+        console.log("backspaceClicked 6 completedLetters",completedLetters);
+        composingLetter = "";
+        textBox.value = completedLetters + composingLetter;
+        textDisplay.textContent = completedLetters + composingLetter;
         superDelete = true; 
-        console.log("text",displayedText);
+        console.log("text",text);
     } else if (lastLetterGroup.length == 1 && superDelete == false) { // test: "딸ㄲ" + backspace
+        console.log("backspaceClicked 7");
+
         if (lastLetterGroup == 'ㄲ') {
             newChar = 'ㄱ';
         } else if (lastLetterGroup == 'ㄸ') {
@@ -215,11 +252,19 @@ function backspaceClicked() { // 딸깍+bbb = 딸ㄱ 이어야함. 딹 으로 �
             newChar = 'ㅈ';
         } else {
         }
-        textBox.value = leftoverLetters + newChar;
+        composingLetter = newChar;
+        textBox.value = completedLetters + composingLetter;
+        textDisplay.textContent = completedLetters + composingLetter;
+
         superDelete = true;
      } else if (lastLetterGroup.length == 2 && superDelete == false) { //test: "딸까" + backspace
-        textBox.value = leftoverLetters + Hangul.assemble(lastLetterGroup.slice(0, -1)) ;
+        console.log("backspaceClicked 8");
+        composingLetter = Hangul.assemble(lastLetterGroup.slice(0, -1));
+        textBox.value = completedLetters + composingLetter ;
+        textDisplay.textContent = completedLetters + composingLetter;
      } else if (lastLetterGroup.length == 3 && superDelete == false) { // test: "딸깎" + backspace
+        console.log("backspaceClicked 9");
+
         if (lastLetterGroup[2] == 'ㄲ') {
             newChar = 'ㄱ';
         } else if (lastLetterGroup[2] == 'ㄸ') {
@@ -231,18 +276,33 @@ function backspaceClicked() { // 딸깍+bbb = 딸ㄱ 이어야함. 딹 으로 �
         } else if (lastLetterGroup[2] == 'ㅉ') {
             newChar = 'ㅈ';
         } else {
-            textBox.value = leftoverLetters + Hangul.assemble(lastLetterGroup.slice(0, -1));
-        }
-        lastLetterGroup[2] = newChar;
-        textBox.value = leftoverLetters + Hangul.assemble(lastLetterGroup) ;
-     } else if (lastLetterGroup.length == 4 && superDelete == false) { //test: "딸값" + backspace
-        textBox.value = leftoverLetters + Hangul.assemble(lastLetterGroup.slice(0, -1)) ;
-     }
+            console.log("backspaceClicked 10");
 
-    textBox.dispatchEvent(new Event('input'));
+            composingLetter = Hangul.assemble(lastLetterGroup.slice(0, -1));
+            textBox.value = completedLetters + composingLetter;
+            textDisplay.textContent = completedLetters + composingLetter;
+        }
+        console.log("backspaceClicked 11");
+
+        lastLetterGroup[2] = newChar;
+        composingLetter = Hangul.assemble(lastLetterGroup);
+        textBox.value = completedLetters + composingLetter;
+        textDisplay.textContent = completedLetters + composingLetter;
+
+     } else if (lastLetterGroup.length == 4 && superDelete == false) { //test: "딸값" + backspace
+        console.log("backspaceClicked 12");
+
+        composingLetter = Hangul.assemble(lastLetterGroup.slice(0, -1));
+        textBox.value = completedLetters + composingLetter;
+        textDisplay.textContent = completedLetters + composingLetter;
+    }
+    console.log("backspaceClicked 13");
+    //textBox.dispatchEvent(new Event('input'));
     console.log("backspaceed ending....")
 
 }
+
+
 
 function radioButtonChanged(event) { 
     const selectedLayout = event.target.id;
@@ -308,12 +368,15 @@ function capslockClicked() {
 }
 
 function checkTextMatch(){
-    const inputText = textDisplay.textContent;
+    const newChar = textDisplay.textContent;
     var textElement = document.getElementById('target-vocaburary');
     const targetText = textElement.textContent;
  
-    if (inputText === targetText) {
+    if (newChar === targetText) {
         textElement.style.color = 'green';
+
+        completedLetters="";
+        composingLetter="";
         textBox.value = '';
         textDisplay.textContent = textBox.value;
 
