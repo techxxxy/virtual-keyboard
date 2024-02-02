@@ -15,37 +15,57 @@ body {
 
 }
 
+
 .body-container {
     margin: 20px 20px 20px 20px;
     border: #33333314 1px solid;
 }
 
-.typing-practice input {
-    width: 300px;
-}
+
+
 
 div.language-change-group {
     margin: 20px 0px 10px 0px;
 }
 
-#textDisplay {
-    line-height: 30px;
-    height: 30px;
-    font-size: 20px;
-
-}
-
 p {
     margin: 8px 0 0 0;
-    max-width: 1073;
 }
 
 
-#target-vocaburary {
+.typing-practice-container {
+    text-align: left;
+}
+
+
+#target-vocaburary, #german-vocaburary, #textDisplay, #vocaburary-hint{
+    width: 150px;
+    white-space: nowrap;
     font-size: 60px;
     height:60px;
     line-height: 60px;
-    text-align: center;
     height: 60px;
-    color: chocolate;
+    border: 1px solid rgba(0, 0, 255, 0.399);
+    text-align: left;
+}
+#german-vocaburary{
+    font-family: "Roboto Mono", Courier;
+    text-align: left;
+}
+#target-vocaburary {
+    text-align: left;
+}
+
+#vocaburary-hint {
+    font-size: 40px;
+    text-align: left;
+    vertical-align: baseline;
+    font-family: "Roboto Mono", Courier;
+}
+
+#textDisplay {
+    text-align: left;
+    border: 1px solid rgba(137, 43, 226, 0.384);
+    font-family: "Roboto Mono", Courier;
+
 }

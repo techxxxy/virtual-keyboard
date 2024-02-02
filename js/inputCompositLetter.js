@@ -3,14 +3,14 @@ let selectedLiElements;
 let textBox;
 let capslockOn = false;
 let superDelete = true;
-let selectedLanguage = 'german'; // orginal is not language, so it will be ignored
+let selectedLanguage = 'korean'; // orginal is not language, so it will be ignored
 let textDisplay; 
 let completedLetters = "";
 let composingLetter = "";
 
 document.addEventListener('DOMContentLoaded', function () {
-
     selectRandomWord();
+
     document.addEventListener('keyup', documentKeyPressed);
     textDisplay = document.getElementById('textDisplay')
 
@@ -103,7 +103,12 @@ const keyboardLayouts = {
         '&nbsp']
 };
 
-const words = ["스위스", "banana","바나나", "파인애플", "짜파게티", "스파게티", "포도", "우유", "내일", "육계장"];
+/* const phonetic = { // Mapping does not work due to placeholder consonant of korean
+    german: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
+    korean: ['ㅏ','ㅂ','ㅊ','ㄷ','ㅔ','','ㄱ','ㅎ','ㅣ','','ㅋ','ㄹ','ㅁ','ㄴ','ㅗ','ㅍ','ㅂ','','ㅅ','ㅌ','ㅜ','','','','','']
+} */
+
+
 
 function allocateTextInKey(){
 }
@@ -145,14 +150,14 @@ function changeKeyboardToOriginal(layout) {
 
 function isNotKorean(text) {
     var textToTest = text;
-    //console.log("textToTest ", textToTest);
+    console.log("textToTest ", textToTest);
     var lastLetter = textBox.value.slice(-1);
     if (textToTest == null ) {
         textToTest = lastLetter;
 //        console.log("!!!!!!", textToTest, "lastLetter", lastLetter );
     }
     const koreanCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-    var isNotKorean = !koreanCheck.test(lastLetter);
+    var isNotKorean = !koreanCheck.test(textToTest);
     return isNotKorean;
 }
 
@@ -163,6 +168,9 @@ function printableClicked(event) {
     console.log("newChar", newChar);
 
     superDelete = isNotKorean(newChar);
+    console.log("newChar", newChar);
+    console.log("isNotKorean(newChar)", isNotKorean(newChar));
+    console.log("superDelete", superDelete);
     textBox.value += newChar;
     compositKorean(newChar)
     //textBox.dispatchEvent(new Event('input')); 
@@ -390,11 +398,41 @@ function checkTextMatch(){
         textElement.style.color = 'red';
     }
 }
-function selectRandomWord() {
-    //console.log ("selectRandomWord,");
-    var randomIndex = Math.floor(Math.random() * words.length);
-    document.getElementById('target-vocaburary').textContent = words[randomIndex];
+
+const words = { 
+    german: ['Alnatura','Banana', 'Kanal', 'Kugel', 'man','Nutella','Samsung'],
+    korean: ['알나투라', '바나나', '카날', '쿠겔', '만', '누텔라', "삼성"]
 }
+
+const alphabets = { 
+    german: ['A', 'B','C', 'D', 'E', 'F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
+    korean: ['아', '베', '체', '데', '에', '', '게','하','이','','카','엘','엠','엔','오','페','꾸','','','테','우','','','','입실론']
+}
+
+
+function selectRandomWord() {
+    console.log ("selectRandomWord,");
+    var randomIndex = Math.floor(Math.random() * words.german.length);
+    var germanWord = words.german[randomIndex];
+    var koreanWord = words.korean[randomIndex];
+    var disassembledKorean = Hangul.d(koreanWord);
+    console.log ("disassembledKorean",disassembledKorean );
+
+    document.getElementById('german-vocaburary').textContent = germanWord;
+    document.getElementById('target-vocaburary').textContent = koreanWord;
+    document.getElementById('vocaburary-hint').textContent = disassembledKorean.join('');
+   
+    var liKeys = [];
+    disassembledKorean.forEach ((item) => { 
+          liKeys.push(keyboardLayouts.korean.indexOf(item));
+      // layout.forEach((item, index) => {
+        //     selectedLiElements[index].innerHTML = item;
+        //     index++;
+    });
+    console.log ("liKeys",liKeys );
+
+}
+
 
 function toggleTabslock(on) {
     var onOff = on; 

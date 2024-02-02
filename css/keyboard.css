@@ -139,7 +139,7 @@ li.capsLock div.upper-part{ margin-right:90px; margin-top: 12px; line-height: 4p
 li.capsLock div.lower-part {font-size: 14px; letter-spacing: 1px; margin-top:16px; margin-right: 63px; }
 
 
-li.enter div { margin: 20px 0 0 80px; }
+li.enter-key div { margin: 20px 0 0 80px; }
 li.shift div { line-height: 2px; margin-right:44px; margin-top: 32px; }
 li.shift span { transform: scale(1.1, 0.8); }
 li.right-shift div{ line-height: 2px; margin-left:120px; margin-top: 32px; }
