@@ -45,27 +45,35 @@ p {
     height:60px;
     line-height: 60px;
     height: 60px;
-    border: 1px solid rgba(0, 0, 255, 0.399);
+    border: 1px solid rgba(0, 0, 255, 0);
     text-align: left;
 }
 #german-vocaburary{
-    font-family: "Roboto Mono", Courier;
-    text-align: left;
-}
-#target-vocaburary {
+    font-family: 'Space Mono', monospace;
     text-align: left;
 }
 
 #vocaburary-hint {
-    font-size: 40px;
+    font-size: 42px;
+    font-weight: 700;
     text-align: left;
     vertical-align: baseline;
-    font-family: "Roboto Mono", Courier;
+    font-family: 'Space Mono', monospace;
 }
 
 #textDisplay {
+    font-size: 50px;
     text-align: left;
-    border: 1px solid rgba(137, 43, 226, 0.384);
-    font-family: "Roboto Mono", Courier;
-
+    border: 1px solid rgba(137, 43, 226, 0);
+    font-family: 'Space Mono', monospace;
 }
+
+#target-vocaburary {
+    font-size: 50px;
+    text-align: left;
+}
+
+.typing-practice-container span {
+    font-family: 'Space Mono', monospace;
+    text-align: center;
+    border: 1px solid rgba(255, 0, 0, 0)}

@@ -171,12 +171,11 @@ function printableClicked(event) {
     console.log("newChar", newChar);
     console.log("isNotKorean(newChar)", isNotKorean(newChar));
     console.log("superDelete", superDelete);
-    textBox.value += newChar;
+    //textBox.value += newChar;
     compositKorean(newChar)
-    //textBox.dispatchEvent(new Event('input')); 
+    compareAndAddClass();
+    //textBox.dispatchEvent(new Event('input'));
 }
-
-
 
 function compositKorean(newChar){
     var newChar = newChar;
@@ -216,6 +215,7 @@ function textBoxInputed(event) { // both keyboard and clicking trigers this func
     completedLetters = textBox.value;
     composingLetter ="";
     textDisplay.textContent = textBox.value;
+    compareAndAddClass()
 
     //    updateTextDisplay();
 }
@@ -306,6 +306,7 @@ function backspaceClicked() { // 딸깍+bbb = 딸ㄱ 이어야함. 딹 으로 �
     }
     console.log("backspaceClicked 13");
     //textBox.dispatchEvent(new Event('input'));
+    compareAndAddClass();
     console.log("backspaceed ending....")
 
 }
@@ -381,27 +382,39 @@ function checkTextMatch(){
     const targetText = textElement.textContent;
  
     if (newChar === targetText) {
-        textElement.style.color = 'green';
 
         completedLetters="";
         composingLetter="";
-        textBox.value = '';
-        textDisplay.textContent = textBox.value;
+        //textDisplay.textContent = textBox.value;
+
+            textElement.classList.add('font-effect-fire-animation');
+            textDisplay.classList.add('font-effect-fire-animation');   
 
         setTimeout(function() {
             selectRandomWord();
-            textElement.style.color = 'black';
+            textElement.classList.remove('font-effect-fire-animation');
+            textDisplay.classList.remove('font-effect-fire-animation');
+            //textElement.style.color = 'black';
+            textBox.value = '';
+            textDisplay.textContent = '';
             textBox.focus; 
-          }, 500);
+          }, 700);
 
     } else {
-        textElement.style.color = 'red';
+         textElement.classList.add('font-effect-neon');
+         textDisplay.classList.add('font-effect-neon');
+        setTimeout(function() {
+            textElement.classList.remove('font-effect-neon');
+            textDisplay.classList.remove('font-effect-neon');
+          }, 200); 
+
+
     }
 }
 
 const words = { 
-    german: ['Alnatura','Banana', 'Kanal', 'Kugel', 'man','Nutella','Samsung'],
-    korean: ['알나투라', '바나나', '카날', '쿠겔', '만', '누텔라', "삼성"]
+    german: ['Banana', 'Kanal', 'Kugel', 'man','Nutella'],
+    korean: ['바나나', '카날', '쿠겔', '만', '누텔라']
 }
 
 const alphabets = { 
@@ -411,31 +424,68 @@ const alphabets = {
 
 
 function selectRandomWord() {
-    console.log ("selectRandomWord,");
+    console.log("selectRandomWord,");
     var randomIndex = Math.floor(Math.random() * words.german.length);
     var germanWord = words.german[randomIndex];
     var koreanWord = words.korean[randomIndex];
-    var disassembledKorean = Hangul.d(koreanWord);
-    console.log ("disassembledKorean",disassembledKorean );
+    var disassembed = Hangul.d(koreanWord);
+    var koreanAlphabets = disassembed.join('');
+    console.log("koreanAlphabets", koreanAlphabets);
 
-    document.getElementById('german-vocaburary').textContent = germanWord;
-    document.getElementById('target-vocaburary').textContent = koreanWord;
-    document.getElementById('vocaburary-hint').textContent = disassembledKorean.join('');
-   
-    var liKeys = [];
-    disassembledKorean.forEach ((item) => { 
-          liKeys.push(keyboardLayouts.korean.indexOf(item));
-      // layout.forEach((item, index) => {
-        //     selectedLiElements[index].innerHTML = item;
-        //     index++;
+    // Call the function to wrap each letter of the German and Korean vocabularies
+    wrapLettersInSpan(germanWord, "german-vocaburary");
+    wrapLettersInSpan(koreanAlphabets, "vocaburary-hint");
+    document.getElementById("target-vocaburary").textContent = koreanWord;
+    //wrapLettersInSpan(koreanWord, "target-vocaburary");   
+}
+
+// Function to wrap each letter of a word in <span> elements
+function wrapLettersInSpan(word, containerId) {
+    console.log("container", containerId);
+    var container = document.getElementById(containerId);
+
+    container.innerHTML = ''; // Clear existing content
+
+    // Iterate over each letter of the word
+    for (var i = 0; i < word.length; i++) {
+        var span = document.createElement("span");
+        span.textContent = word[i]; // Set the text content to the letter
+        container.appendChild(span);
+    }
+}
+
+function compareAndAddClass() {
+    const target = document.getElementById("target-vocaburary").textContent;
+    const diassembledTarget = Hangul.d(target).join('');
+    var koreanInput = Hangul.d(textDisplay.textContent).join('');
+
+    // Select the corresponding <span> elements
+    var germanSpans = document.getElementById("german-vocaburary").querySelectorAll("span");
+    var koreanSpans = document.getElementById("vocaburary-hint").querySelectorAll("span");
+
+    germanSpans.forEach(element => {
+        element.classList.remove("font-effect-fire-animation");
     });
-    console.log ("liKeys",liKeys );
+    koreanSpans.forEach(element => {
+        element.classList.remove("font-effect-fire-animation");
+    });
 
+    // Determine the minimum length of the two vocabularies
+    var minLength = Math.min(diassembledTarget.length, koreanInput.length);
+
+    // Iterate through each letter and compare up to the minimum length
+    for (var i = 0; i < minLength; i++) {
+        if (diassembledTarget[i] === koreanInput[i]) {
+            // Add the 'fire' class to the matching letter spans
+            germanSpans[i].classList.add("font-effect-fire-animation");
+            koreanSpans[i].classList.add("font-effect-fire-animation");
+        } 
+    }
 }
 
 
 function toggleTabslock(on) {
-    var onOff = on; 
+    var onOff = on;
     var capslock = document.getElementById('capslock-light')
     if (onOff == 'on') {
         capslock.classList.add("capslock-light-on");
